@@ -1,72 +1,71 @@
 <!DOCTYPE html>
 <html ng-app="extractionApp">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Extraction Midterm</title>
 
-     <!-- Bootstrap Minified -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" >
-
-    <!-- Bootstrap Theme -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" >
-    
-    <!-- Unique CSS -->
-    <link rel="stylesheet" href="css/main.css">
-
-    <!-- JavaScript -->
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <!-- Angular Script -->
-    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components\angular-modal-service\dst\angular-modal-service.min.js"></script>  
-
-  </head>
-  <body>
-    <div class="container-fluid">
-    
-      <main class="" ui-view></main> 
-
-      <!-- This is a nav bar as a footer -->
-     <nav class="navbar navbar-default navbar-bottom">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Don't Give Up!</a>
-          </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extraction Midterm</title>
+  <!-- Bootstrap Minified -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Bootstrap Theme -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Unique CSS -->
+  <link rel="stylesheet" href="css/main.css">
   
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li><a href="#">Sign Up</a></li>
-              <li><a href="#">Login</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Missions <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Nightmares</a></li>
-                  <li><a href="#">Panic Attacks</a></li>
-                  <li><a href="#">Anxiety</a></li>
-                </ul>
-              </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="tel: 1-800-273-8255">Veteran's Crisis Line</a></li>
-              <li><a href="tel: 1-800-273-8255">1-800-273-8255</a></li>
-            </ul>
-          </div>
+  <!-- JavaScript -->
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <!-- Angular Script -->
+  <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <!--  <script src="bower_components\angular-modal-service\dst\angular-modal-service.min.js"></script> -->
+ <!--  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+  <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script> -->
+</head>
+
+<body>
+  <div class="container-fluid">
+    <main class="" ui-view></main>
+    <!-- This is a nav bar as a footer -->
+    <nav class="navbar navbar-default navbar-bottom">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Don't Give Up!</a>
         </div>
-      </nav>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Sign Up</a></li>
+            <li><a href="#">Login</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Missions <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Nightmares</a></li>
+                <li><a href="#">Panic Attacks</a></li>
+                <li><a href="#">Anxiety</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="tel: 1-800-273-8255">Veteran's Crisis Line</a></li>
+            <li><a href="tel: 1-800-273-8255">1-800-273-8255</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <div>
-    <!-- Javascript &amp; AngularJS files -->
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/app.extraction-factory.js"></script>
-    <!-- <script type="text/javascript" src="js/app.extraction-controller.js"></script> -->
-  </body>
+      <!-- Javascript &amp; AngularJS files -->
+      <script type="text/javascript" src="js/app.js"></script>
+      <script type="text/javascript" src="js/app.extraction-factory.js"></script>
+      <script type="text/javascript" src="js/app.extractionController.js"></script>
+      <!-- <script type="text/javascript" src="js/app.extraction-controller.js"></script> -->
+</body>
+
 </html>

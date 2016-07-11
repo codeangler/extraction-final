@@ -1,0 +1,25 @@
+{
+  "name": "extraction-final",
+  "homepage": "https://github.com/codeangler/extraction-final",
+  "authors": [
+    "codeangler <burnett.casey@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-modal-service": "^0.10.1",
+    "angular": "^1.5.6",
+    "angular-strap": "^2.3.9",
+    "angular-ui-router": "^0.3.1",
+    "bootstrap": "^3.3.6",
+    "angular-animate": "^1.5.7"
+  }
+}
