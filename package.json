@@ -1,0 +1,26 @@
+{
+  "name": "extraction-final",
+  "version": "1.0.0",
+  "description": "Final Extraction Game App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeangler/extraction-final.git"
+  },
+  "author": "Casey Burnett  @codeangler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeangler/extraction-final/issues"
+  },
+  "homepage": "https://github.com/codeangler/extraction-final#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.3",
+    "morgan": "^1.7.0"
+  }
+}
