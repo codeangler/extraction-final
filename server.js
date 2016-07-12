@@ -3,9 +3,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-
+var apiRoutes = require('./api_routes')
 //  Connect to Database
-mongoose.connect('mongodb://localhost/extractionDB')
+mongoose.connect('mongodb://localhost/extraction_db', function(err){
+  if(err){console.log("Error connecting to db")}
+    if(!err){console.log('You have connected to  mongodb')}
+})
 
 // Create Express App Object
 var app = express();
@@ -20,6 +23,8 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res){
   res.sendFile('/index.html', {root : './public'})
 });
+
+app.use('/api/v1', apiRoutes)
 
 var port = process.env.PORT || 3260
 app.listen(port, function(){
