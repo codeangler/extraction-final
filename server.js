@@ -72,8 +72,6 @@ app.isAuthenticatedAjax = function(req, res, next){
     res.send({error:'not logged in'});
 }
 
-
-
 app.post('/login', function(req, res, next){
     // use your local strategy here.
     passport.authenticate('local', function(err, user, info) {
@@ -85,6 +83,13 @@ app.post('/login', function(req, res, next){
         });
     })(req, res, next);
 })
+
+// Logout
+app.get('/logout', function(req, res){
+    req.logout()
+    res.redirect('/')
+})
+
 // Routes
 app.get('/', function(req, res){
   res.sendFile('/index.html', {root : './public'})

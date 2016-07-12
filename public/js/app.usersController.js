@@ -16,10 +16,11 @@ function usersCtrl($http, $state) {
     $http.post('/api/v1/users', uCtrl.newUser)
       .then(function(returnData) {
         // Reset form
-
         uCtrl.newUser = {}
         console.log('you created a user from Angularjs uCtrl')
+        // closes sign up modal
         $('#loginModal').modal('hide');
+        // redirects to state dashboard
         $state.go('dashboard')
       })
   }

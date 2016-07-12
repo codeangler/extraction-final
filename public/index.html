@@ -46,6 +46,7 @@
             </li>
             <li><a href="#" data-toggle="modal" data-target="#loginModal">Sign Up</a></li>
             <li><a href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
+            <li><a href="/logout">Log Out</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="tel: 1-800-273-8255">Veteran's Crisis Line</a></li>
@@ -65,8 +66,6 @@
               <li><a href="#create" data-toggle="tab">Create Account</a></li>
             </ul>
           </div>
-         
-
           <div id='myTabContent' class='tab-content'>
             <!-- This is the login pane -->
             <div class="tab-pane active in" id="login">
@@ -93,13 +92,13 @@
                   <form ng-submit="uCtrl.createUser()">
                     <div class='form-group'>
                       <label class="radio-inline">
-                        <input ng-model="uCtrl.newUser.role" type="radio" name="user" value= 'user'>User
+                        <input ng-model="uCtrl.newUser.role" type="radio" name="user" value='user'>User
                       </label>
                       <label class="radio-inline">
-                        <input ng-model="uCtrl.newUser.role" type="radio" name="optradio" value= 'clinician'>Clinician
+                        <input ng-model="uCtrl.newUser.role" type="radio" name="optradio" value='clinician'>Clinician
                       </label>
                       <label class="radio-inline">
-                        <input ng-model="uCtrl.newUser.role" type="radio" name="optradio" value= 'admin'>Administrator
+                        <input ng-model="uCtrl.newUser.role" type="radio" name="optradio" value='admin'>Administrator
                       </label>
                     </div>
                     <div class='form-group'>
@@ -125,7 +124,8 @@
                     <p class="text-right"><a href="#">Forgot password?</a></p>
                     <div class="modal-footer">
                       <a href="#" data-dismiss="modal" class="btn">Close</a>
-                      <button type="submit" class="btn btn-primary">Create Account</button></a>
+                      <button type="submit" class="btn btn-primary">Create Account</button>
+                      </a>
                     </div>
                   </form>
                 </div>
@@ -135,13 +135,13 @@
         </div>
       </div>
     </div>
-      <!-- container -->
-      <!-- Javascript &amp; AngularJS files -->
-      <script type="text/javascript" src="js/app.js"></script>
-      <script type="text/javascript" src="js/app.extraction-factory.js"></script>
-      <script type="text/javascript" src="js/app.extractionController.js"></script>
-      <script type="text/javascript" src="js/app.usersController.js"></script>
-      <script type="text/javascript" src="js/app.dashboardController.js"></script>
+    <!-- container -->
+    <!-- Javascript &amp; AngularJS files -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/app.extraction-factory.js"></script>
+    <script type="text/javascript" src="js/app.extractionController.js"></script>
+    <script type="text/javascript" src="js/app.usersController.js"></script>
+    <script type="text/javascript" src="js/app.dashboardController.js"></script>
 </body>
 
 </html>
