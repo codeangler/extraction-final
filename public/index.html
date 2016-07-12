@@ -66,26 +66,8 @@
             </ul>
           </div>
           <div id='myTabContent' class='tab-content'>
+            <!-- This is the login pane -->
             <div class="tab-pane active in" id="login">
-                   
-                    <div class="modal-body">
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input class="form-control" id="exampleInputEmail1" placeholder="Enter email" type="email">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input class="form-control" id="exampleInputPassword1" placeholder="Password" type="password">
-                  </div>
-                  <p class="text-right"><a href="#">Forgot password?</a></p>
-                </div>
-                <div class="modal-footer">
-                  <a href="#" data-dismiss="modal" class="btn">Close</a>
-                  <a href="#" class="btn btn-primary">Log-in</a>
-                </div>
-            
-            </div>
-            <div class="tab-pane fade" id="create">
               <div class="modal-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
@@ -101,19 +83,57 @@
                 <a href="#" data-dismiss="modal" class="btn">Close</a>
                 <a href="#" class="btn btn-primary">Log-in</a>
               </div>
-              
-          
+            </div>
+            <!-- Create New User Tabs-->
+            <div class="tab-pane fade" id="create">
+              <div class="modal-body">
+                <div ng-controller="usersController as uCtrl">
+                  <form ng-submit="uCtrl.createUser()">
+                    <div class='form-group'>
+                      <label class="radio-inline">
+                        <input ng-model="uCtrl.newUser.role" type="radio" name="user" value= 'user'>User
+                      </label>
+                      <label class="radio-inline">
+                        <input ng-model="uCtrl.newUser.role" type="radio" name="optradio" value= 'clinician'>Clinician
+                      </label>
+                      <label class="radio-inline">
+                        <input ng-model="uCtrl.newUser.role" type="radio" name="optradio" value= 'admin'>Administrator
+                      </label>
+                    </div>
+                    <div class='form-group'>
+                      <label for="name">Name</label>
+                      <input class="form-control" placeholder="Enter your name" name="name" ng-model="uCtrl.newUser.name">
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email Address</label>
+                      <input class="form-control" placeholder="Enter your email address" name="email" ng-model="uCtrl.newUser.email">
+                    </div>
+                    <div class='form-group'>
+                      <label for="name">Phone Number</label>
+                      <input class="form-control" placeholder="###-###-####" name="Phone Number" ng-model="uCtrl.newUser.phoneNumber">
+                    </div>
+                    <div class='form-group' ng-show='uCtrl.newUser.role === "user"'>
+                      <label for="name">Clinican's Email Address</label>
+                      <input class="form-control" placeholder="Clinician's Email" name="clinican" ng-model="uCtrl.newUser.phoneNumber">
+                    </div>
+                    <p class="text-right"><a href="#">Forgot password?</a></p>
+                    <div class="modal-footer">
+                      <a href="#" data-dismiss="modal" class="btn">Close</a>
+                      <button type="submit" class="btn btn-primary">Create Account</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    
-  </div>  <!-- container -->
-  <!-- Javascript &amp; AngularJS files -->
-  <script type="text/javascript" src="js/app.js"></script>
-  <script type="text/javascript" src="js/app.extraction-factory.js"></script>
-  <script type="text/javascript" src="js/app.extractionController.js"></script>
+      <!-- container -->
+      <!-- Javascript &amp; AngularJS files -->
+      <script type="text/javascript" src="js/app.js"></script>
+      <script type="text/javascript" src="js/app.extraction-factory.js"></script>
+      <script type="text/javascript" src="js/app.extractionController.js"></script>
+      <script type="text/javascript" src="js/app.usersController.js"></script>
 </body>
 
 </html>
