@@ -6,7 +6,7 @@ var userSchema = mongoose.Schema({
   phoneNumber: String,
   email: String,
   patient: {
-    role: Boolean,
+    // role: Boolean,
     enrolledWith: [
       {
         type: mongoose.Schema.ObjectId,
@@ -15,9 +15,9 @@ var userSchema = mongoose.Schema({
     ],
     gameTotalScore: Number,
   },
-  clinician: {
-    role: Boolean
-  },
+  // clinician: {
+  //   role: Boolean
+  // },
   role: String
 
 });

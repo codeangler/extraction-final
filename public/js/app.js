@@ -1,6 +1,6 @@
 angular.module('extractionApp', ['ui.router'])
   .config(configRouter)
-  
+
 configRouter.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 // Establish partials of .states and .states.sub
@@ -8,26 +8,30 @@ function configRouter($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/',
-      templateUrl: 'partials/home.html',
+      templateUrl: 'html/home.html',
       controller: 'panicCtrl as pCtrl',
     })
     .state('panicGame', {
       url: '/panic-game',
-      templateUrl: 'partials/panic-game.html',
+      templateUrl: 'html/panic-game.html',
       controller: 'panicCtrl as pCtrl'
     })
     .state('panicGame.rating', {
-      templateUrl: 'partials/panic-rating.html'
+      templateUrl: 'html/panic-rating.html'
     })
     .state('panicGame.intervention', {
-      templateUrl: 'partials/panic-intervention.html'
+      templateUrl: 'html/panic-intervention.html'
     })
     .state('panicRecord', {
       url: '/panic-record',
-      templateUrl: 'partials/panic-record.html',
+      templateUrl: 'html/panic-record.html',
       controller: 'panicCtrl as pCtrl'
+    })
+    .state('dashboard', {
+      url: '/dashboard',
+      templateUrl: 'html/dashboard.html',
+      controller: 'dashboardController as dCtrl'
     })
 
   $urlRouterProvider.otherwise('/')
 }
-

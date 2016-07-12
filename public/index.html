@@ -114,12 +114,12 @@
                     </div>
                     <div class='form-group' ng-show='uCtrl.newUser.role === "user"'>
                       <label for="name">Clinican's Email Address</label>
-                      <input class="form-control" placeholder="Clinician's Email" name="clinican" ng-model="uCtrl.newUser.phoneNumber">
+                      <input class="form-control" placeholder="Clinician's Email" name="clinican" ng-model="uCtrl.newUser.enrolled">
                     </div>
                     <p class="text-right"><a href="#">Forgot password?</a></p>
                     <div class="modal-footer">
                       <a href="#" data-dismiss="modal" class="btn">Close</a>
-                      <button type="submit" class="btn btn-primary">Create Account</button>
+                      <button type="submit" class="btn btn-primary">Create Account</button></a>
                     </div>
                   </form>
                 </div>
@@ -134,6 +134,7 @@
       <script type="text/javascript" src="js/app.extraction-factory.js"></script>
       <script type="text/javascript" src="js/app.extractionController.js"></script>
       <script type="text/javascript" src="js/app.usersController.js"></script>
+      <script type="text/javascript" src="js/app.dashboardController.js"></script>
 </body>
 
 </html>
