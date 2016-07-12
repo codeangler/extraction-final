@@ -2,9 +2,9 @@
 angular.module('extractionApp')
   .controller('usersController', usersCtrl)
 
-usersCtrl.$inject = ['$http']
+usersCtrl.$inject = ['$http', '$state']
 
-function usersCtrl($http) {
+function usersCtrl($http, $state) {
   var uCtrl = this;
 
   uCtrl.newUser = {
@@ -16,8 +16,11 @@ function usersCtrl($http) {
     $http.post('/api/v1/users', uCtrl.newUser)
       .then(function(returnData) {
         // Reset form
+
         uCtrl.newUser = {}
         console.log('you created a user from Angularjs uCtrl')
+        $('#loginModal').modal('hide');
+        $state.go('dashboard')
       })
   }
 }

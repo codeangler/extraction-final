@@ -4,14 +4,27 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var apiRoutes = require('./api_routes')
+var port = process.env.PORT || 3260
+
+// Create Express App Object
+var app = express();
+
 //  Connect to Database
 mongoose.connect('mongodb://localhost/extraction_db', function(err){
   if(err){console.log("Error connecting to db")}
     if(!err){console.log('You have connected to  mongodb')}
 })
 
-// Create Express App Object
-var app = express();
+/** Express Session Setup **/
+var session = require('express-session')
+app.sessionMiddleware = session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+})
+app.use(app.sessionMiddleware)
+/** End Express Session Setup **/
+
 
 // Application Config
 app.use(logger('dev'));
@@ -19,6 +32,59 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 
+
+/** Passport Config **/
+var passport = require('passport')
+var LocalStrategy = require('passport-local').Strategy;
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    });
+});
+
+
+app.isAuthenticated = function(req, res, next){
+    // If the current user is logged in, allow them through
+    // else, kick them out to the login page.
+     if(req.isAuthenticated()){
+    // Middleware allows the execution chain to continue.
+        return next();
+    }
+    // If not, redirect to login
+    console.log('get outta here!')
+    res.redirect('/');
+
+}
+
+app.isAuthenticatedAjax = function(req, res, next){
+    // If the current user is logged in...
+    if(req.isAuthenticated()){
+    // Middleware allows the execution chain to continue.
+        return next();
+    }
+    // If not, redirect to login
+    res.send({error:'not logged in'});
+}
+
+
+
+app.post('/login', function(req, res, next){
+    // use your local strategy here.
+    passport.authenticate('local', function(err, user, info) {
+        if (err) { return next(err); }
+        if (!user) { return res.send({error : 'something went wrong :('}); }
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            return res.send({success:'success'});
+        });
+    })(req, res, next);
+})
 // Routes
 app.get('/', function(req, res){
   res.sendFile('/index.html', {root : './public'})
@@ -26,7 +92,7 @@ app.get('/', function(req, res){
 
 app.use('/api/v1', apiRoutes)
 
-var port = process.env.PORT || 3260
+// Node Server Listening
 app.listen(port, function(){
   console.log('Node Server is Listening on port: ' + port);
 });

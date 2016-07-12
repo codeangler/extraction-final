@@ -4,7 +4,14 @@ var mongoose = require('mongoose');
 var userSchema = mongoose.Schema({
   name: String,
   phoneNumber: String,
-  email: String,
+  username: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
   patient: {
     // role: Boolean,
     enrolledWith: [
@@ -18,7 +25,10 @@ var userSchema = mongoose.Schema({
   // clinician: {
   //   role: Boolean
   // },
-  role: String
+  role: {
+    type: String,
+    required: true
+  },
 
 });
 
