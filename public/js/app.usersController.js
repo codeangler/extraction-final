@@ -17,10 +17,10 @@ function usersCtrl($http, $state) {
         if (returnData.data.success) {
           console.log('you checked a username & password with passport.js')
           $('#loginModal').modal('hide');
-          uCtrl.user = {
+          console.log('this is login'  , returnData)
+          uCtrl.user = {}
 
-          }
-          $state.go('dashboard')
+          $state.go('dashboard', {id : returnData.data.user._id})
         }
       })
   }
@@ -28,13 +28,13 @@ function usersCtrl($http, $state) {
   uCtrl.createUser = function() {
     $http.post('/api/v1/users', uCtrl.newUser)
       .then(function(returnData) {
+                
+        // closes sign up modal
+        $('#loginModal').modal('hide');
         // Reset form
         uCtrl.newUser = {}
-        console.log('you created a user from Angularjs uCtrl')
-          // closes sign up modal
-        $('#loginModal').modal('hide');
         // redirects to state dashboard
-        $state.go('dashboard')
+        $state.go('dashboard', {id : returnData.data.user._id})
       })
   }
 }

@@ -97,22 +97,22 @@ app.isAuthenticatedAjax = function(req, res, next){
 
 app.post('/login', function(req, res, next){
     // use your local strategy here.
-    console.log('you are in here at app.post in server.js')
+    console.log('app.post in server.js')
     passport.authenticate('local', function(err, user, info) {
         if (err) { return next(err); }
         if (!user) { return res.send({error : 'something went wrong :('}); }
         req.logIn(user, function(err) {
             if (err) { return next(err); }
-            return res.send({success:'success'});
+            return res.send({success:'success', user: user});
         });
     })(req, res, next);
 })
 
-app.get('/api/me',
-  passport.authenticate('basic', { session: false }),
-  function(req, res) {
-    res.json(req.user);
-  });
+// app.get('/api/me',
+//   passport.authenticate('basic', { session: false }),
+//   function(req, res) {
+//     res.json(req.user);
+//   });
 
 // Logout
 app.get('/logout', function(req, res){
@@ -124,6 +124,8 @@ app.get('/logout', function(req, res){
 app.get('/', function(req, res){
   res.sendFile('/index.html', {root : './public'})
 });
+
+app.use('/api/v1', apiRoutes)
 
 // Node Server Listening
 app.listen(port, function(){

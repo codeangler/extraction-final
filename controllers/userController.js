@@ -16,7 +16,7 @@ module.exports = {
   },
 
   upsert: function(req, res) {
-    console.log(req.body)
+    // console.log('controllers/userController.js', req.body)
     if (req.params.id) {
       User.update({ _id: req.params.id }, req.body, function(err, updated) {
         if (err) {
@@ -31,7 +31,7 @@ module.exports = {
           newUser.save(function(saveErr, user) {
             if (saveErr) { res.send({ err: saveErr }) } else {
               req.login(user, function(loginErr) {
-                if (loginErr) { res.send({ err: loginErr }) } else { res.send({ success: 'success' }) }
+                if (loginErr) { res.send({ err: loginErr }) } else { res.send({ success: 'success' , user: user}) }
               })
             }
           })

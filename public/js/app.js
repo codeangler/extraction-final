@@ -28,7 +28,7 @@ function configRouter($stateProvider, $urlRouterProvider) {
       controller: 'panicCtrl as pCtrl'
     })
     .state('dashboard', {
-      url: '/dashboard',
+      url: '/dashboard/:id',
       templateUrl: 'html/dashboard.html',
       controller: 'dashboardController as dCtrl'
     })
