@@ -14,6 +14,7 @@ mongoose.connect('mongodb://localhost/extraction_db', function(err){
   if(err){console.log("Error connecting to db")}
     if(!err){console.log('You have connected to  mongodb')}
 })
+var User = require('./models/userSchema') // Captures the model that is exported from userSchema.js
 
 /** Express Session Setup **/
 var session = require('express-session')
@@ -107,6 +108,12 @@ app.post('/login', function(req, res, next){
     })(req, res, next);
 })
 
+app.get('/api/me',
+  passport.authenticate('basic', { session: false }),
+  function(req, res) {
+    res.json(req.user);
+  });
+
 // Logout
 app.get('/logout', function(req, res){
     req.logout()
@@ -117,8 +124,6 @@ app.get('/logout', function(req, res){
 app.get('/', function(req, res){
   res.sendFile('/index.html', {root : './public'})
 });
-
-app.use('/api/v1', apiRoutes)
 
 // Node Server Listening
 app.listen(port, function(){
