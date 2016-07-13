@@ -48,6 +48,28 @@ passport.deserializeUser(function(id, done) {
     });
 });
 
+// When someone tries to log in to our site, how do we determine that they are who they say they are?
+var bcrypt = require('bcryptjs')
+passport.use(new LocalStrategy(
+    // write local strategy here
+    function(username, password, done) {
+        User.findOne({ username: username }, function (err, user) {
+            if (err) { return done(err); }
+            if (!user) {
+                return done(null, false); // No error and no user
+            }
+            // If we got this far, then we know that the user exists. But did they put in the right password?
+            bcrypt.compare(password, user.password, function(error, matched){
+                if (matched === true){
+                    return done(null,user) // No error and this is the user they should be signed in as
+                }
+                else {
+                    return done(null, false) // Passwords didn't match no error and no user
+                }
+            })
+        });
+    }
+));
 
 app.isAuthenticated = function(req, res, next){
     // If the current user is logged in, allow them through
@@ -74,6 +96,7 @@ app.isAuthenticatedAjax = function(req, res, next){
 
 app.post('/login', function(req, res, next){
     // use your local strategy here.
+    console.log('you are in here at app.post in server.js')
     passport.authenticate('local', function(err, user, info) {
         if (err) { return next(err); }
         if (!user) { return res.send({error : 'something went wrong :('}); }

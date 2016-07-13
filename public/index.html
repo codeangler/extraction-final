@@ -56,7 +56,7 @@
       </div>
     </nav>
     <!--      This is a login modal bootstrap3 -->
-    <div class="modal fade" id="loginModal">
+    <div class="modal fade" id="loginModal" ng-controller="usersController as uCtrl">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -67,28 +67,32 @@
             </ul>
           </div>
           <div id='myTabContent' class='tab-content'>
-            <!-- This is the login pane -->
+            <!-- Login Pane -->
             <div class="tab-pane active in" id="login">
-              <div class="modal-body">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input class="form-control" id="exampleInputEmail1" placeholder="Enter email" type="email">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input class="form-control" id="exampleInputPassword1" placeholder="Password" type="password">
-                </div>
-                <p class="text-right"><a href="#">Forgot password?</a></p>
-              </div>
-              <div class="modal-footer">
-                <a href="#" data-dismiss="modal" class="btn">Close</a>
-                <a href="#" class="btn btn-primary">Log-in</a>
+              <div>
+                <form ng-submit = uCtrl.login()>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="email">Email Address</label>
+                      <input class="form-control" placeholder="Enter your email address" name="email" ng-model="uCtrl.userMonkey.username">
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input class="form-control" placeholder="password" name="email" ng-model="uCtrl.userMonkey.password">
+                    </div>
+                    <p class="text-right"><a href="#">Forgot password?</a></p>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="#" data-dismiss="modal" class="btn">Close</a>
+                    <button type='submit' class="btn btn-primary">Login</button>
+                  </div>
+                </form>
               </div>
             </div>
             <!-- Create New User Tabs-->
             <div class="tab-pane fade" id="create">
               <div class="modal-body">
-                <div ng-controller="usersController as uCtrl">
+                <div>
                   <form ng-submit="uCtrl.createUser()">
                     <div class='form-group'>
                       <label class="radio-inline">
@@ -141,7 +145,9 @@
     <script type="text/javascript" src="js/app.extraction-factory.js"></script>
     <script type="text/javascript" src="js/app.extractionController.js"></script>
     <script type="text/javascript" src="js/app.usersController.js"></script>
+  
     <script type="text/javascript" src="js/app.dashboardController.js"></script>
+    
 </body>
 
 </html>
