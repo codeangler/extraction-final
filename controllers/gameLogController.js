@@ -3,9 +3,17 @@ var GameLog = require('../models/gameLogSchema');
 
 module.exports = {
   get: function(req, res) {
-    GameLog.find({}, function(err, gamelogs) {
-      if (err) { res.send(err) } else { res.send(gamelogs) }
-    })
+
+    if(req.params.id){
+      console.log(req.params, 'gameLogController.js')
+      GameLog.find({"gameUser": req.params.id}, function(err, gamelogs){
+        res.send(gamelogs)
+      })
+    } else {
+        GameLog.find({}, function(err, gamelogs) {
+          if (err) { res.send(err) } else { res.send(gamelogs) }
+        })
+      }
   },
 
   upsert: function(req, res) {

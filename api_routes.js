@@ -26,4 +26,7 @@ function isSignedIn(req, res, next){
     .get(gameLogCtrl.get)
     .post(gameLogCtrl.upsert)
 
+  apiRouter.route('/gamelogs/:id')
+    .get(gameLogCtrl.get)
+
 module.exports = apiRouter

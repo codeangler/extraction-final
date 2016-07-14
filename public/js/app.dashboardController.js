@@ -6,17 +6,21 @@ dCtrl.$inject = ['$http', '$stateParams']
 
 function dCtrl($http, $stateParams) {
   var dCtrl = this;
-
   $http.get('/api/v1/users/' + $stateParams.id)
+  
     .then(function(returnData) {
-      console.log(returnData, 'at dashboardController')
+      // console.log(returnData, 'at app.dashboardController')
       dCtrl.theUser = returnData.data
-    })
 
-  $http.get('/api/v1/gamelogs')
+
+    })
+  $http.get('/api/v1/gamelogs/' + $stateParams.id)
     .then(function(returnGameData) {
-      console.log(returnGameData, 'at dashboardController')
+      console.log(returnGameData, 'app.dashboardController')
+        console.log($stateParams.id, 'app.dashboardController')
+
       dCtrl.theGameLog = returnGameData.data
     })
+
 
 }
