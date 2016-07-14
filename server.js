@@ -95,6 +95,14 @@ app.isAuthenticatedAjax = function(req, res, next){
     res.send({error:'not logged in'});
 }
 
+app.isUser = function (req, res, next){
+    if(req.isAuthenticated() && req.user.id == req.params.id){
+        return next()
+    }
+    res.redirect('/')
+
+}
+
 app.post('/login', function(req, res, next){
     // use your local strategy here.
     console.log('app.post in server.js')
@@ -124,6 +132,10 @@ app.get('/logout', function(req, res){
 app.get('/', function(req, res){
   res.sendFile('/index.html', {root : './public'})
 });
+
+app.get('/dashboard', app.isAuthenticated, app.isUser, function(req, res){
+
+})
 
 app.use('/api/v1', apiRoutes)
 

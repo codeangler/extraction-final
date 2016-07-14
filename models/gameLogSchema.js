@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var gameLogSchema = mongoose.Schema({
   gameName : String,
   gameComplete : Boolean,
-  gameDate : String,
+  gameDate : Number,
   gameUser : {
     type: mongoose.Schema.ObjectId,
     ref: 'User'
@@ -15,4 +15,4 @@ var gameLogSchema = mongoose.Schema({
 });
 
 var GameLog = mongoose.model('GameLog', gameLogSchema);
-module.export = GameLog;
+module.exports = GameLog;
