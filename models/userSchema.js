@@ -12,19 +12,8 @@ var userSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  patient: {
-    // role: Boolean,
-    enrolledWith: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User'
-      }
-    ],
-    gameTotalScore: Number,
-  },
-  // clinician: {
-  //   role: Boolean
-  // },
+  enrolledWith:[String], 
+  gameTotalScore: Number, 
   role: {
     type: String,
     required: true

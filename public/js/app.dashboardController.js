@@ -11,7 +11,10 @@ function dCtrl($http, $stateParams) {
     .then(function(returnData) {
       // console.log(returnData, 'at app.dashboardController')
       dCtrl.theUser = returnData.data
-
+      if(dCtrl.theUser.role === 'clinician'){
+        // $http.get('/api/v1/users/')
+        console.log('you are a clinician')
+      }
 
     })
   $http.get('/api/v1/gamelogs/' + $stateParams.id)

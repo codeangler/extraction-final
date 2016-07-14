@@ -14,7 +14,7 @@ function isSignedIn(req, res, next){
 
 //  User Routes
   apiRouter.route('/users')
-    .get(isSignedIn, userCtrl.get)
+    .get(userCtrl.get)  // put in later isSignedIn,
     .post(userCtrl.upsert)
 
   apiRouter.route('/users/:id')
