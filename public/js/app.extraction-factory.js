@@ -1,4 +1,5 @@
-angular.module('extractionApp')
+(function(){
+  angular.module('extractionApp')
   .factory('ExtractionFactory', eFactory)
 
   function eFactory() {
@@ -18,11 +19,14 @@ angular.module('extractionApp')
     currentRank = ['private', 'Private First Class', 'Lance Corporal']
     factoryGameRecord = {};
     factoryIterator = 0
+    
 
     return {
       co : commandingOfficer,
       gameRecord : factoryGameRecord,
       iterator : factoryIterator,
       rank : currentRank,
+      
     };
   }
+}());

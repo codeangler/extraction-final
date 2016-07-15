@@ -14,11 +14,11 @@ function isSignedIn(req, res, next){
 
 //  User Routes
   apiRouter.route('/users')
-    .get(userCtrl.get)  // put in later isSignedIn,
+    .get(isSignedIn, userCtrl.get)  // put in later isSignedIn,
     .post(userCtrl.upsert)
 
   apiRouter.route('/users/:id')
-    .get(userCtrl.get) // isSignedIn in blocks refresh.  isSignedIn removed
+    .get(isSignedIn, userCtrl.get) // isSignedIn in blocks refresh.  isSignedIn removed
     .post(userCtrl.upsert)
     .delete(userCtrl.delete)
 

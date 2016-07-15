@@ -11,17 +11,20 @@ function dCtrl($http, $stateParams) {
       // console.log(returnData, 'at app.dashboardController')
       dCtrl.theUser = returnData.data.user
       dCtrl.thePatients = returnData.data.patients
-
-      if (dCtrl.theUser.role === "user") {
-        console.log('this user is in app.dashboardController')
-      }
+      console.log('app.dashboardController', returnData)
+        // if (dCtrl.theUser.role === "user") {
+        //   console.log('this user is in app.dashboardController')
+        // }
     })
 
-
+//  Patient log-in request for game records
   $http.get('/api/v1/gamelogs/' + $stateParams.id)
     .then(function(returnGameData) {
-      console.log(returnGameData.data)
       dCtrl.theGameLog = returnGameData.data
+      // var timestamp = dCtrl.theGameLog[0].gameDate
+      // var datestamp = new Date(timestamp)
+      // console.log( datestamp, 'return game data app.dashboardController.js')
+
     })
 
   dCtrl.fetchPatientRecord = function(patient) {
@@ -30,8 +33,9 @@ function dCtrl($http, $stateParams) {
     console.log('you called function', patient._id)
     $http.get('/api/v1/gamelogs/' + patient._id)
       .then(function(returnGameData) {
-        console.log(returnGameData.data, 'return game data app.dashboardController.js')
         dCtrl.theGameLog = returnGameData.data
+        console.log(dCtrl.theGameLog, 'return game data app.dashboardController.js')
+
       })
   }
 

@@ -1,4 +1,4 @@
-// User CRUD Controller
+(function(){// User CRUD Controller
 var User = require('../models/userSchema')
 var bcrypt = require('bcryptjs')
 
@@ -70,3 +70,4 @@ module.exports = {
     })
   }
 }
+}());

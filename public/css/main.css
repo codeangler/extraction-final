@@ -6,6 +6,7 @@ nav {
   margin-top: 30px;
 }
 
+
 /*.ratingGroup {
   border-spacing: 1px;
 }
@@ -23,6 +24,7 @@ div.ratingGroup:nth-child(2){
   margin-bottom: 2px;
 }
 
+
 /*#image .jumbotron {
     background: #000 url("../assets/4-usarmy-large.jpg") no-repeat center center;
     background-size: 100% 100%;
@@ -32,20 +34,23 @@ div.ratingGroup:nth-child(2){
     color: #FFF; // change text color
 }*/
 
+#marque {
+  min-height: 200px
+}
+
 .jumbotron p,
 p {
-  color: #00ff00; 
+  color: #00ff00;
   font-family: "Courier";
 }
 
 #gameRecord {
   font-family: "Courier";
   font-weight: 100;
-  font-variant: small-caps;
+  /*font-variant: small-caps;*/
 }
 
-#gameRecord p{
+#gameRecord p {
   font-size: 30px;
   font-weight: 200;
-
 }

@@ -1,4 +1,4 @@
-// Game CRUD Controller
+(function(){// Game CRUD Controller
 var GameLog = require('../models/gameLogSchema');
 
 module.exports = {
@@ -49,3 +49,4 @@ module.exports = {
   //   })
   // }
 }
+}());
