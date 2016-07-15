@@ -24,9 +24,16 @@ function dCtrl($http, $stateParams) {
       dCtrl.theGameLog = returnGameData.data
     })
 
-    dCtrl.fetchRecords = function(id){
-      var gameUserLog = dCtrl.thePatients[id] 
-      console.log(gameUserLog)
-    }
+  dCtrl.fetchPatientRecord = function(patient) {
+    // var gameUserLog = dCtrl.thePatients[id]
+
+    console.log('you called function', patient._id)
+    $http.get('/api/v1/gamelogs/' + patient._id)
+      .then(function(returnGameData) {
+        console.log(returnGameData.data, 'return game data app.dashboardController.js')
+        dCtrl.theGameLog = returnGameData.data
+      })
+  }
+
 
 }

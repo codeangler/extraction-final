@@ -2,9 +2,13 @@
 You are in the dashboard for :
 <h1>{{dCtrl.theUser.name}}</h1>
 <h5>{{dCtrl.theUser.role}}</h5>
-<h4 ng-repeat="patients in dCtrl.thePatients">{{patients.name}} {{patients._id}}
-  <a href="" ng-click=dCtrl.fetchRecords($index)>Show</a>
-  <button class="btn-lg btn primary" ng-click="showme=false">Hide</button> 
-</h4>
+
+<!-- Generate list of patients from returned GET request sorted by enrolled Clinican's username.  Returned patients names are made available as options and on selction fire function to capture their data -->
+Select Patient
+<select ng-options="patient.name for patient in dCtrl.thePatients" ng-model="dCtrl.selectedPatient" ng-change="dCtrl.fetchPatientRecord(dCtrl.selectedPatient)"></select>
+
+ 
+<hr />
 <p  ng-repeat="log in dCtrl.theGameLog" class="gamelog">{{log.gameDate}} </p>
+
 
