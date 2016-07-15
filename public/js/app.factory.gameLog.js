@@ -6,17 +6,38 @@
 
   // newGameLog()  to POST to MongoDB
   function gameLog($http, $state, ExtractionFactory) {
-    var gFactory = this;
-    // gFactory = {
-    //   gameComplete: false
-    // }
+    var gLog = this;
+
+
 
     factoryGameLog = function() {
-      if (!factoryGameRecord.gameRecord.sud17) {
-        console.log('incomplete', factoryGameRecord.gameRecord.sud17 )
+      var fLog = factoryGameRecord.gameRecord
+      if (!fLog.sud17) {
+
+        gLog.logUpdate = {
+          gameName: 'panic',
+          gameComplete: false,
+          gameDate: fLog.currentDate1,
+        }
+        console.log('incomplete', gLog.logUpdate)
+
+        $http.post('/api/v1/gamelogs', gLog.logUpdate)
+          .then(function(returnData) {
+            console.log(returnData)
+            // redirects to state dashboard
+            // $state.go('dashboard', { id: returnData.data.user._id })
+          })
 
       } else {
-        console.log('this is complete')
+        // console.log('this is complete', factoryGameRecord.gameRecord)
+        // $http.post('/api/v1/gamelogs', gFactory.gameUpdate)
+        //   .then(function(returnData) {
+
+        //     // redirects to state dashboard
+        //     // $state.go('dashboard', { id: returnData.data.user._id })
+        //   })
+        console.log('else app.factory.gameLog')
+
       }
 
     }

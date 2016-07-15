@@ -4,6 +4,7 @@ var gameLogSchema = mongoose.Schema({
   gameName : String,
   gameComplete : Boolean,
   gameDate : Number,
+  gameEndDate: Number,
   gameUser : {
     type: mongoose.Schema.ObjectId,
     ref: 'User'

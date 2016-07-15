@@ -1,4 +1,4 @@
-// app.userController.js
+(function(){// app.userController.js
 angular.module('extractionApp')
   .controller('usersController', usersCtrl)
 
@@ -38,3 +38,4 @@ function usersCtrl($http, $state) {
       })
   }
 }
+}());
