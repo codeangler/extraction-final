@@ -47,11 +47,13 @@
     pCtrl.submitRating = function(event) {
       var rating = Number(event.target.id);
       var currentDate = new Date();
+      var currentTime = Date.now();
       var justDate = currentDate.toDateString();
       var stringDate = currentDate.toString();
       // .push(rating &  currentDate) to gameRecord Array
       // alternative syntax that needs spefic iteration pCtrl.gameRecord.push({sud: rating, currentDate: currentDate})
       pCtrl.gameRecord["sud" + factoryIterator] = rating;
+      pCtrl.gameRecord["currentTime" + factoryIterator] = currentTime;
       pCtrl.gameRecord["currentDate" + factoryIterator] = currentDate;
       pCtrl.gameRecord["toDateString" + factoryIterator] = justDate;
       pCtrl.gameRecord["stringDate" + factoryIterator] = stringDate;
@@ -64,8 +66,10 @@
 
     pCtrl.submitResponse = function(e) {
       var currentDate = new Date();
+      var currentTime = Date.now();
       var stringDate = currentDate.toString();
       pCtrl.gameRecord["response" + factoryIterator] = pCtrl.response;
+      pCtrl.gameRecord["currentTime" + factoryIterator] = currentTime;
       pCtrl.gameRecord["currentDate" + factoryIterator] = currentDate;
       pCtrl.gameRecord["stringDate" + factoryIterator] = stringDate;
       pCtrl.response = "";

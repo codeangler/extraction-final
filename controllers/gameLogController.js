@@ -27,8 +27,10 @@ module.exports = {
     // } else {
     var newGameLog = new GameLog(req.body)
     console.log(req.body)
+    
     newGameLog.save(function(err, doc) {
         if (err) { res.send(err) }
+        console.log(doc.id)
         res.send(doc)
       })
       // }

@@ -13,11 +13,11 @@
     factoryGameLog = function() {
       var fLog = factoryGameRecord.gameRecord
       if (!fLog.sud17) {
-
+        console.log('type of', typeof(fLog.currentTime1))
         gLog.logUpdate = {
           gameName: 'panic',
           gameComplete: false,
-          gameDate: fLog.currentDate1,
+          gameDate: fLog.currentTime1, // This needs to be a number for calendar
         }
         console.log('incomplete', gLog.logUpdate)
 
