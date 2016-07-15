@@ -5,8 +5,8 @@ module.exports = {
   get: function(req, res) {
 
     if(req.params.id){
-      console.log(req.params, 'gameLogController.js')
       GameLog.find({"gameUser": req.params.id}, function(err, gamelogs){
+      console.log(gamelogs, 'gameLogController.js')
         res.send(gamelogs)
       })
     } else {

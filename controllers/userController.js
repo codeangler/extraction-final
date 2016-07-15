@@ -4,13 +4,27 @@ var bcrypt = require('bcryptjs')
 
 module.exports = {
   get: function(req, res) {
+    var callBackString = {}
     if (req.params.id) {
       User.findOne({ _id: req.params.id }, function(err, user) {
-        res.send(user)
+        callBackString.user = user
+          // Test response User for role of "clinician"
+        if (user.role === 'clinician') {
+          // Search db for all documents that have a 
+          User.find({ enrolledWith: { $in: [user.username] } }, function(err, patients) {
+            callBackString.patients = patients
+            res.send(callBackString)
+            console.log(callBackString, 'controllers/userController')
+          })
+        } else{
+          callBackString.user = user;
+          res.send(callBackString)
+        }
       })
     } else {
       User.find({}, function(err, users) {
-        res.send(users)
+        callBackString.users
+        res.send(callBackString)
       })
     }
   },
@@ -31,7 +45,7 @@ module.exports = {
           newUser.save(function(saveErr, user) {
             if (saveErr) { res.send({ err: saveErr }) } else {
               req.login(user, function(loginErr) {
-                if (loginErr) { res.send({ err: loginErr }) } else { res.send({ success: 'success' , user: user}) }
+                if (loginErr) { res.send({ err: loginErr }) } else { res.send({ success: 'success', user: user }) }
               })
             }
           })
