@@ -11,6 +11,13 @@
         url: '/',
         templateUrl: 'html/home.html',
         controller: 'panicCtrl as pCtrl',
+        onEnter: function(){
+         
+          console.log('you entered home'  )
+          
+          console.log('reset @ home: factpory Iterator'  )
+
+        }
       })
       .state('panicGame', {
         url: '/panic-game',

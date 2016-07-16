@@ -6,40 +6,39 @@
 
   // newGameLog()  to POST to MongoDB
   function gameLog($http, $state, ExtractionFactory) {
+
     var gLog = this;
-
-
 
     factoryGameLog = function() {
       var fLog = factoryGameRecord.gameRecord
 
-      if (!fLog.sud17) {
+      if (fLog.sud17) {
+        console.log('if  app.factory.gameLog', gLog.logUpdate)
+
+        gLog.logUpdate.gameEndDate = fLog.currentTime17
+
+        $http.post('/api/v1/gamelogs', gLog.logUpdate)
+          .then(function(returnData) {
+            console.log('findOneand UPdate', gLog.logUpdate)
+              // redirects to state dashboard
+              // $state.go('dashboard', { id: returnData.data.user._id })
+          })
+
+      } else {
 
         gLog.logUpdate = {
           gameName: 'panic',
           gameComplete: false,
           gameDate: fLog.currentTime1, // This needs to be a number for calendar
         }
+        console.log('initialize log for post incomplete:', gLog.logUpdate)
+
         $http.post('/api/v1/gamelogs', gLog.logUpdate)
           .then(function(returnData) {
+            console.log('return data from sever', returnData)
             gLog.logUpdate._id = returnData.data._id
-             gLog.logUpdate.gameComplete = true
-            console.log('return data from post / ', gLog.logUpdate)
-
-            // redirects to state dashboard
-            // $state.go('dashboard', { id: returnData.data.user._id })
-          })
-
-      } else {
-        console.log('else app.factory.gameLog', gLog.logUpdate)
-
-        gLog.logUpdate.gameEndDate = fLog.currentTime17
-        
-
-        $http.post('/api/v1/gamelogs', gLog.logUpdate)
-          .then(function(returnData) {
-
-            console.log('findOneand UPdate', gLog.logUpdate)
+            gLog.logUpdate.gameComplete = true
+            console.log('modify frontend gamelog ', gLog.logUpdate)
 
             // redirects to state dashboard
             // $state.go('dashboard', { id: returnData.data.user._id })

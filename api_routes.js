@@ -28,5 +28,6 @@ function isSignedIn(req, res, next){
 
   apiRouter.route('/gamelogs/:id')
     .get(gameLogCtrl.get)
+    .delete(gameLogCtrl.delete)
 
 module.exports = apiRouter

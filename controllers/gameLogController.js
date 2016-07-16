@@ -17,51 +17,61 @@
     },
 
     upsert: function(req, res) {
-      // console.log('controllers/gameLogController.js', req.body)
-      // if (req.params.id) {
-      //   GameLog.update({ _id: req.params.id }, req.body, function(err, updated) {
-      //     if (err) {
-      //       return res.send(err)
-      //     }
-      //   })
-      // } else {
-      // Set a variable to accept the req.body
-      if (req.body.gameComplete === true) {
-        var id = req.body._id
-        console.log("this is the mongoose controler _id", id)
-        GameLog.findByIdAndUpdate(id, req.body, { upsert: true,'new': true }, function(err, doc) {
-          if (err) { res.send(err) }
-          console.log('find and update gameLogController.js', doc)
-          res.send(doc)
-        })
-        console.log('hey this file exists, gameLogController.npm', req.body)
 
-      } else {
-        var upsertGameLog = new GameLog(req.body)
+      // Check for user object , if true save to DB
+      if (req.user) {
+        console.log(req.user._id, "req.user")
+          // user is Logged in and has completed the mission
+        if (req.body._id) {
+          var id = req.body._id
+          console.log('findByIdAndUpdate', req.body)
 
-        upsertGameLog.save(function(err, doc) {
-          if (err) { res.send(err) }
-          console.log('file created, return new id', doc)
-          res.send(doc)
-        })
+          GameLog.findByIdAndUpdate(id, req.body, { upsert: true, 'new': true }, function(err, doc) {
+              if (err) { res.send(err) }
+              res.send(doc)
+            }) // else create a new log for partial complete missions assigned to user
+        } else {
+          // append to the req.body the property of gameUser and a value of ._id
+          req.body.gameUser = req.user._id
+          var upsertGameLog = new GameLog(req.body)
+            // console.log('you should be attaching me to session object, sucker')
+          upsertGameLog.save(function(err, doc) {
+            if (err) { res.send(err) }
+            console.log('upsertGameLog.save response:', doc)
+            res.send(doc)
+          })
+        }
+      } else { // Store on req.session.object for gameuser not logged in
+        // var upsertGameLog = new GameLog(req.body)
+        if (req.body._id) {
+          var id = req.body._id
+          console.log('findByIdAndUpdate', req.body)
+          res.send('yo man you are great')
+        } else {  // Store incomplete game and return _id to frontend
+          req.session.upsertGameLog = new GameLog(req.body)
+            // console.log('no post to db, simply attaced to session', req.body)
+          console.log('req.body', req.body, 'req.session', req.session)
+          res.send(req.session.upsertGameLog)
+        }
 
       }
 
+
     },
 
-    // delete: function(req, res) {
-    //   var id = req.params.id;
+    delete: function(req, res) {
+      var id = req.params.id;
 
-    //   GameLog.findByIdAndRemove(id, req.body, function(error) {
-    //     if (error) {
-    //       console.error("Your remove call failed : ", error)
-    //     } else {
-    //       res.json({
-    //         success: true,
-    //         message: "Deleted donute by id: " + id
-    //       })
-    //     }
-    //   })
-    // }
+      GameLog.findByIdAndRemove(id, req.body, function(error) {
+        if (error) {
+          console.error("Your remove call failed : ", error)
+        } else {
+          res.json({
+            success: true,
+            message: "Deleted donute by id: " + id
+          })
+        }
+      })
+    }
   }
 }());

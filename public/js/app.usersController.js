@@ -7,9 +7,24 @@ usersCtrl.$inject = ['$http', '$state']
 function usersCtrl($http, $state) {
   var uCtrl = this;
 
-  uCtrl.newUser = {
-    role: "user"
-  }
+  // manage tabs
+  // uCtrl.tabSignUp = ""
+  // uCtrl.tabLogin = ""
+
+  
+
+  // uCtrl.signUpTab = function () {
+  //   uCtrl.tabSignUp = "active"
+  // uCtrl.tabLogin = ""
+  // }
+  // uCtrl.loginTab = function () {
+  //   uCtrl.tabSignUp = ""
+  // uCtrl.tabLogin = "active"
+  // }
+
+  // uCtrl.newUser = {
+  //   role: "user"
+  // }
 
   uCtrl.login = function() {
     $http.post('/login', uCtrl.userMonkey)

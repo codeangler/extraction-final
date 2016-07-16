@@ -32,20 +32,20 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Don't Give Up!</a>
+          <a class="navbar-brand" href="/">Don't Give Up!</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Missions <span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Missions <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Nightmares</a></li>
-                <li><a href="#">Panic Attacks</a></li>
-                <li><a href="#">Anxiety</a></li>
+                <li><a ui-sref="#">Nightmares</a></li>
+                <li><a ui-sref="panicGame">Panic Attacks</a></li>
+                <li><a ui-sref="#">Anxiety</a></li>
               </ul>
             </li>
-            <li><a href="#" data-toggle="modal" data-target="#loginModal">Sign Up</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
+            <li><a data-toggle="modal" data-target="#loginModal" ng-click='uCtrl.signUpTab()'>Sign Up</a></li>
+            <li><a data-toggle="modal" data-target="#loginModal" ng-click='uCtrl.loginTab()'>Login</a></li>
             <li><a href="/logout">Log Out</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -68,7 +68,7 @@
           </div>
           <div id='myTabContent' class='tab-content'>
             <!-- Login Pane -->
-            <div class="tab-pane active in" id="login">
+            <div  class="tab-pane in active" id="login">
               <div>
                 <form ng-submit = uCtrl.login()>
                   <div class="modal-body">
@@ -90,7 +90,7 @@
               </div>
             </div>
             <!-- Create New User Tabs-->
-            <div class="tab-pane fade" id="create">
+            <div  class="tab-pane fade " id="create">
               <div class="modal-body">
                 <div>
                   <form ng-submit="uCtrl.createUser()">
@@ -142,8 +142,8 @@
     <!-- container -->
     <!-- Javascript &amp; AngularJS files -->
     <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/app.extraction-factory.js"></script>
-    <script type="text/javascript" src="js/app.extractionController.js"></script>
+    <script type="text/javascript" src="js/app.factory.extraction.js"></script>
+    <script type="text/javascript" src="js/app.panicController.js"></script>
     <script type="text/javascript" src="js/app.usersController.js"></script>
     <script type="text/javascript" src="js/app.factory.gameLog.js"></script>
   
