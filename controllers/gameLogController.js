@@ -47,6 +47,7 @@
           var id = req.body._id
           console.log('findByIdAndUpdate', req.body)
           res.send('yo man you are great')
+          
         } else {  // Store incomplete game and return _id to frontend
           req.session.upsertGameLog = new GameLog(req.body)
             // console.log('no post to db, simply attaced to session', req.body)
