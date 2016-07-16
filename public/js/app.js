@@ -13,9 +13,9 @@
         controller: 'panicCtrl as pCtrl',
         onEnter: function(){
          
-          console.log('you entered home'  )
+          // console.log('you entered home'  )
           
-          console.log('reset @ home: factpory Iterator'  )
+          // console.log('reset @ home: factpory Iterator'  )
 
         }
       })

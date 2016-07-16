@@ -19,7 +19,7 @@
 
         $http.post('/api/v1/gamelogs', gLog.logUpdate)
           .then(function(returnData) {
-            console.log('findOneand UPdate', gLog.logUpdate)
+            console.log('findByIdAndUpdate', gLog.logUpdate)
               // redirects to state dashboard
               // $state.go('dashboard', { id: returnData.data.user._id })
           })
@@ -36,7 +36,16 @@
         $http.post('/api/v1/gamelogs', gLog.logUpdate)
           .then(function(returnData) {
             console.log('return data from sever', returnData)
-            gLog.logUpdate._id = returnData.data._id
+            
+            // returnData from a already signed-in user will have different response
+            if (returnData.data._id) {
+              gLog.logUpdate._id = returnData.data._id
+            }
+            else{
+              let temp = returnData.data
+              gLog.logUpdate._id = temp.upsertGameLog._id
+              // gLog.logUpdate._id = returnData.data.upsertGameLog[_id]
+            }
             gLog.logUpdate.gameComplete = true
             console.log('modify frontend gamelog ', gLog.logUpdate)
 
