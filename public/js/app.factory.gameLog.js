@@ -12,32 +12,38 @@
 
     factoryGameLog = function() {
       var fLog = factoryGameRecord.gameRecord
+
       if (!fLog.sud17) {
-        console.log('type of', typeof(fLog.currentTime1))
+
         gLog.logUpdate = {
           gameName: 'panic',
           gameComplete: false,
           gameDate: fLog.currentTime1, // This needs to be a number for calendar
         }
-        console.log('incomplete', gLog.logUpdate)
-
         $http.post('/api/v1/gamelogs', gLog.logUpdate)
           .then(function(returnData) {
-            console.log(returnData)
+            gLog.logUpdate._id = returnData.data._id
+             gLog.logUpdate.gameComplete = true
+            console.log('return data from post / ', gLog.logUpdate)
+
             // redirects to state dashboard
             // $state.go('dashboard', { id: returnData.data.user._id })
           })
 
       } else {
-        // console.log('this is complete', factoryGameRecord.gameRecord)
-        // $http.post('/api/v1/gamelogs', gFactory.gameUpdate)
-        //   .then(function(returnData) {
+        console.log('else app.factory.gameLog', gLog.logUpdate)
 
-        //     // redirects to state dashboard
-        //     // $state.go('dashboard', { id: returnData.data.user._id })
-        //   })
-        console.log('else app.factory.gameLog')
+        gLog.logUpdate.gameEndDate = fLog.currentTime17
+        
 
+        $http.post('/api/v1/gamelogs', gLog.logUpdate)
+          .then(function(returnData) {
+
+            console.log('findOneand UPdate', gLog.logUpdate)
+
+            // redirects to state dashboard
+            // $state.go('dashboard', { id: returnData.data.user._id })
+          })
       }
 
     }
