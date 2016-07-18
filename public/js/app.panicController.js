@@ -61,7 +61,7 @@
       pCtrl.stepThroughIterator(factoryIterator);
       factoryGameRecord.gameRecord = pCtrl.gameRecord
         // POST to 
-      GameLogFactory.gamePostFunc();
+      GameLogFactory.factoryGameLog();
     }
 
     pCtrl.submitResponse = function(e) {

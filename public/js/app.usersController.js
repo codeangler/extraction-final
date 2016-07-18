@@ -22,17 +22,17 @@ function usersCtrl($http, $state) {
   // uCtrl.tabLogin = "active"
   // }
 
-  // uCtrl.newUser = {
-  //   role: "user"
-  // }
+  uCtrl.newUser = {
+    role: "user"
+  }
 
   uCtrl.login = function() {
     $http.post('/login', uCtrl.userMonkey)
       .then(function(returnData) {
         if (returnData.data.success) {
-          console.log('you checked a username & password with passport.js')
+          // console.log('you checked a username & password with passport.js')
           $('#loginModal').modal('hide');
-          console.log('this is login'  , returnData)
+          // console.log('this is login'  , returnData)
           uCtrl.user = {}
 
           $state.go('dashboard', {id : returnData.data.user._id})
