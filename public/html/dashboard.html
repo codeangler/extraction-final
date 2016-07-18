@@ -7,14 +7,10 @@ You are in the dashboard for :
 Select Patient
 <select ng-options="patient.name for patient in dCtrl.thePatients" ng-model="dCtrl.selectedPatient" ng-change="dCtrl.fetchPatientRecord(dCtrl.selectedPatient)"></select>
 
- 
 <hr />
-<p  ng-repeat="log in dCtrl.theGameLog" class="gamelog">{{log.gameDate}} {{log.gameName}} <!-- {{log.initialSud}} --></p>
 
-<hr />
-Is this my calendar ?
-<h2 class="text-center">{{ dCtrl.calendarTitle }}</h2>
-
+<h2 class="text-center">{{ dCtrl.selectedPatient.name }}'s Calendar</h2>
+<h4 class="text-center">{{ dCtrl.calendarTitle }}</h4>
   <div class="row">
 
     <div class="col-md-6 text-center">

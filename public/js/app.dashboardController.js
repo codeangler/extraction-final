@@ -8,8 +8,8 @@ function dCtrl($http, $stateParams, GameLogFactory) {
   var dCtrl = this;
   // var gLogFactory = GameLogFactory
   console.log('is this a session? user was loggedIn:', GameLogFactory)
-  
-///////////////   POST & GET  user and game records   \\\\\\\\\\\\\\\\\\\\\
+
+  ///////////////   POST & GET  user and game records   \\\\\\\\\\\\\\\\\\\\\
   $http.get('/api/v1/users/' + $stateParams.id)
     .then(function(returnData) {
       // console.log(returnData, 'at app.dashboardController')
@@ -39,29 +39,21 @@ function dCtrl($http, $stateParams, GameLogFactory) {
         $http.get('/api/v1/gamelogs/' + $stateParams.id)
           .then(function(returnGameData) {
             dCtrl.theGameLog = returnGameData.data
-            for(let i = 0; i < dCtrl.theGameLog.length; i++){
+            for (let i = 0; i < dCtrl.theGameLog.length; i++) {
               let temp = {
 
-                title: dCtrl.theGameLog[i].gameName,
-                 type: 'info',
-                 startsAt: dCtrl.theGameLog[i].gameDate,
-                 //endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
-                 draggable: false,
-                 resizable: false
+                title: dCtrl.theGameLog[i].gameName.replace(/\b[a-z]/g, function(f) {
+                  return f.toUpperCase(); }),
+                type: 'info',
+                startsAt: new Date(dCtrl.theGameLog[i].gameDate),
+                //endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
+                draggable: false,
+                resizable: false
               }
               dCtrl.events.push(temp)
-              
+
             }
 
-// dCtrl.events = [
-    //   {
-    //     title: 'An event',
-    //     type: 'warning',
-    //     startsAt: moment().startOf('week').subtract(2, 'days').add(8, 'hours').toDate(),
-    //     endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
-    //     draggable: true,
-    //     resizable: true
-    //   }, {
           })
       }
     })
@@ -75,17 +67,31 @@ function dCtrl($http, $stateParams, GameLogFactory) {
       .then(function(returnGameData) {
         dCtrl.theGameLog = returnGameData.data
         console.log(dCtrl.theGameLog, 'return game data app.dashboardController.js')
+        for (let i = 0; i < dCtrl.theGameLog.length; i++) {
+              let temp = {
+
+                title: dCtrl.theGameLog[i].gameName.replace(/\b[a-z]/g, function(f) {
+                  return f.toUpperCase(); }),
+                type: 'info',
+                startsAt: new Date(dCtrl.theGameLog[i].gameDate),
+                //endsAt: moment().startOf('week').add(1, 'week').add(9, 'hours').toDate(),
+                draggable: false,
+                resizable: false
+              }
+              dCtrl.events.push(temp)
+
+            }
 
       })
   }
 
-///////////////////    ####  CALENDAR   ######/////////////////
+  ///////////////////    ####  CALENDAR   ######/////////////////
 
-    //These variables MUST be set as a minimum for the calendar to work
-    dCtrl.calendarView = 'week';
-    dCtrl.viewDate = new Date();
+  //These variables MUST be set as a minimum for the calendar to work
+  dCtrl.calendarView = 'week';
+  dCtrl.viewDate = new Date();
 
-    dCtrl.events =[]
+  dCtrl.events = []
     // dCtrl.events = [
     //   {
     //     title: 'An event',
@@ -112,28 +118,28 @@ function dCtrl($http, $stateParams, GameLogFactory) {
     //   }
     // ];
 
-    dCtrl.isCellOpen = false;
+  dCtrl.isCellOpen = false;
 
-    dCtrl.eventClicked = function(event) {
-      alert.show('Clicked', event);
-    };
+  dCtrl.eventClicked = function(event) {
+    alert.show('Clicked', event);
+  };
 
-    dCtrl.eventEdited = function(event) {
-      alert.show('Edited', event);
-    };
+  dCtrl.eventEdited = function(event) {
+    alert.show('Edited', event);
+  };
 
-    dCtrl.eventDeleted = function(event) {
-      alert.show('Deleted', event);
-    };
+  dCtrl.eventDeleted = function(event) {
+    alert.show('Deleted', event);
+  };
 
-    dCtrl.eventTimesChanged = function(event) {
-      alert.show('Dropped or resized', event);
-    };
+  dCtrl.eventTimesChanged = function(event) {
+    alert.show('Dropped or resized', event);
+  };
 
-    dCtrl.toggle = function($event, field, event) {
-      $event.preventDefault();
-      $event.stopPropagation();
-      event[field] = !event[field];
-    };
+  dCtrl.toggle = function($event, field, event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    event[field] = !event[field];
+  };
 
 }

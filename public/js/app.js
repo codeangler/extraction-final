@@ -39,9 +39,7 @@
         url: '/dashboard/:id',
         templateUrl: 'html/dashboard.html',
         controller: 'dashboardController as dCtrl',
-        data: {
-            css: 'bower_components/bootstrap/dist/css/bootstrap.min.css'
-          }
+      
       })
 
     $urlRouterProvider.otherwise('/')
