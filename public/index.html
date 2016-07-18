@@ -12,11 +12,22 @@
   <!-- Unique CSS -->
   <link rel="stylesheet" href="css/main.css">
   <!-- JavaScript -->
-  <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- Angular Script -->
+   <!-- JavaScript for Moment.js necessary for anguar-bootstrap-calendar -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+
+    <!-- Angular Script -->
   <script type="text/javascript" src="bower_components/angular/angular.js"></script>
   <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <!--   Angular Map &amp; Features  -->
+  <link href="bower_components/angular-bootstrap-calendar/dist/css/angular-bootstrap-calendar.min.css" rel="stylesheet">
+  <script src="bower_components/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+  <!--   Angular Map Optional Features  -->
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+  <!-- <script src="bower_components/angular-ui-router-styles/ui-router-styles.js"></script> -->
+
 </head>
 
 <body>
@@ -68,9 +79,9 @@
           </div>
           <div id='myTabContent' class='tab-content'>
             <!-- Login Pane -->
-            <div  class="tab-pane in active" id="login">
+            <div class="tab-pane in active" id="login">
               <div>
-                <form ng-submit = uCtrl.login()>
+                <form ng-submit=uCtrl.login()>
                   <div class="modal-body">
                     <div class="form-group">
                       <label for="email">Email Address</label>
@@ -90,7 +101,7 @@
               </div>
             </div>
             <!-- Create New User Tabs-->
-            <div  class="tab-pane fade " id="create">
+            <div class="tab-pane fade " id="create">
               <div class="modal-body">
                 <div>
                   <form ng-submit="uCtrl.createUser()">
@@ -146,9 +157,7 @@
     <script type="text/javascript" src="js/app.panicController.js"></script>
     <script type="text/javascript" src="js/app.usersController.js"></script>
     <script type="text/javascript" src="js/app.factory.gameLog.js"></script>
-  
     <script type="text/javascript" src="js/app.dashboardController.js"></script>
-    
 </body>
 
 </html>

@@ -11,4 +11,66 @@ Select Patient
 <hr />
 <p  ng-repeat="log in dCtrl.theGameLog" class="gamelog">{{log.gameDate}} {{log.gameName}} <!-- {{log.initialSud}} --></p>
 
+<hr />
+Is this my calendar ?
+<h2 class="text-center">{{ dCtrl.calendarTitle }}</h2>
+
+  <div class="row">
+
+    <div class="col-md-6 text-center">
+      <div class="btn-group">
+
+        <button
+          class="btn btn-primary"
+          mwl-date-modifier
+          date="dCtrl.viewDate"
+          decrement="dCtrl.calendarView">
+          Previous
+        </button>
+        <button
+          class="btn btn-default"
+          mwl-date-modifier
+          date="dCtrl.viewDate"
+          set-to-today>
+          Today
+        </button>
+        <button
+          class="btn btn-primary"
+          mwl-date-modifier
+          date="dCtrl.viewDate"
+          increment="dCtrl.calendarView">
+          Next
+        </button>
+      </div>
+    </div>
+
+    <br class="visible-xs visible-sm">
+
+    <div class="col-md-6 text-center">
+      <div class="btn-group">
+        <label class="btn btn-primary" ng-model="dCtrl.calendarView" uib-btn-radio="'year'">Year</label>
+        <label class="btn btn-primary" ng-model="dCtrl.calendarView" uib-btn-radio="'month'">Month</label>
+        <label class="btn btn-primary" ng-model="dCtrl.calendarView" uib-btn-radio="'week'">Week</label>
+        <label class="btn btn-primary" ng-model="dCtrl.calendarView" uib-btn-radio="'day'">Day</label>
+      </div>
+    </div>
+
+  </div>
+
+  <br>
+<mwl-calendar
+   events="dCtrl.events"
+    view="dCtrl.calendarView"
+    view-title="dCtrl.calendarTitle"
+    view-date="dCtrl.viewDate"
+    on-event-click="dCtrl.eventClicked(calendarEvent)"
+    on-event-times-changed="dCtrl.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+    
+    cell-is-open="dCtrl.isCellOpen"
+    day-view-start="06:00"
+    day-view-end="22:00"
+    day-view-split="30"
+    cell-modifier="dCtrl.modifyCell(calendarCell)">
+</mwl-calendar>
+
 
