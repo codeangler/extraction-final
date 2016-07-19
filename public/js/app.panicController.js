@@ -93,52 +93,52 @@
 
         if (factoryIterator == 0) {
           myCount();
-          pCtrl.officerStatements = commandingOfficer.initialHome[0]
+          pCtrl.officerStatements = ExtractionFactory.co.initialHome[0]
           typewriter();
         } else if (factoryIterator == 1) {
-          pCtrl.officerStatements = commandingOfficer.sud[1]
+          pCtrl.officerStatements = ExtractionFactory.co.sud[1]
           clearInterval(typewriterTimer);
           typewriter();
         } else if (factoryIterator == 2) {
           // sight
           pCtrl.currentSense = "Sights";
-          pCtrl.officerStatements = commandingOfficer.sight[0];
+          pCtrl.officerStatements = ExtractionFactory.co.sight[0];
           clearInterval(typewriterTimer);
           typewriter();
         } else if (factoryIterator == 7) {
           // touch
           pCtrl.currentSense = "Textures";
-          pCtrl.officerStatements = commandingOfficer.touch[0]
+          pCtrl.officerStatements = ExtractionFactory.co.touch[0]
           clearInterval(typewriterTimer);
           typewriter();
         } else if (factoryIterator == 11) {
           // sound
           pCtrl.currentSense = "Sounds";
-          pCtrl.officerStatements = commandingOfficer.sound[0]
+          pCtrl.officerStatements = ExtractionFactory.co.sound[0]
           clearInterval(typewriterTimer);
           typewriter();
         } else if (factoryIterator == 14) {
           // smell
           pCtrl.currentSense = "Smells";
-          pCtrl.officerStatements = commandingOfficer.smell[0]
+          pCtrl.officerStatements = ExtractionFactory.co.smell[0]
           clearInterval(typewriterTimer);
           typewriter();
         } else if (factoryIterator == 16) {
           // taste
           pCtrl.currentSense = "Taste";
-          pCtrl.officerStatements = commandingOfficer.taste[0]
+          pCtrl.officerStatements = ExtractionFactory.co.taste[0]
           clearInterval(typewriterTimer);
           typewriter();
         } else if (factoryIterator == 17) {
           // Announce Mission Complete Get Another Sud Reading 
-          pCtrl.officerStatements = commandingOfficer.sud[0]
+          pCtrl.officerStatements = ExtractionFactory.co.sud[0]
           clearInterval(typewriterTimer);
           typewriter();
           timeFunction(factoryGameRecord);
 
         } else if (factoryIterator == 18) {
           // Announce Mission Complete Get Another Sud Reading 
-          pCtrl.officerStatements = commandingOfficer.mission[0]
+          pCtrl.officerStatements = ExtractionFactory.co.mission[0]
           clearInterval(typewriterTimer);
           typewriter();
           ratingChangeFunc(factoryGameRecord);
