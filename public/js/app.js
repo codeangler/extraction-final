@@ -12,17 +12,15 @@
         templateUrl: 'html/home.html',
         controller: 'panicCtrl as pCtrl',
         onEnter: function(){
-         
-          // console.log('you entered home'  )
-          
-          // console.log('reset @ home: factpory Iterator'  )
-
         }
       })
       .state('panicGame', {
         url: '/panic-game',
         templateUrl: 'html/panic-game.html',
-        controller: 'panicCtrl as pCtrl'
+        controller: 'panicCtrl as pCtrl',
+        onEnter: function(){
+          
+        }
       })
       .state('panicGame.rating', {
         templateUrl: 'html/panic-rating.html'

@@ -54,3 +54,17 @@ p {
   font-size: 30px;
   font-weight: 200;
 }
+
+input.ng-invalid.ng-touched {
+  border: 2px solid #DA3637;
+}
+
+input.ng-valid.ng-touched {
+  border: 1px solid #509D12;
+}
+
+.ng-invalid .btn.submit {
+  background: gray;
+  color: lightgray;
+  border-color: gray;
+}

@@ -19,21 +19,39 @@
       <h4>Ending Level</h4>
       <p>{{ pCtrl.passFactoryGameRecord.gameRecord.sud17}}</p>
     </div>
-  <div class="row"><hr></div> 
-  <div class="row">
-    <div class="col-md-4 text-center">
-      <h4>Mission Date</h4>
-      <p>{{pCtrl.passFactoryGameRecord.gameRecord.toDateString1}}</p>
+    <div class="row">
+      <hr>
     </div>
-    <div class="col-md-4 text-center">
-      <h4>Time Elapsed</h4>
-      <p>{{pCtrl.timeElasped }}</p>
-    </div>
-    <div class="col-md-4 text-center">
-      <h4>Rank</h4>
-      <p>{{pCtrl.currentRank}}</p>
+    <div class="row">
+      <div class="col-md-4 text-center">
+        <h4>Mission Date</h4>
+        <p>{{pCtrl.passFactoryGameRecord.gameRecord.toDateString1}}</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <h4>Time Elapsed</h4>
+        <p>{{pCtrl.timeElasped }}</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <h4>Rank</h4>
+        <p>{{pCtrl.currentRank}}</p>
+      </div>
     </div>
   </div>
+  <div class="row">
+  </div>
+  <div class="row">
+    <div class="">
+      <div class="">
+        <div class="col-xs-12 col-md-4">
+          <p class="text-center"><button class="btn btn-default" data-toggle="modal" data-target="#loginModal" ng-click='uCtrl.signUpTab()'>Login</button></p>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <p class="text-center"><button class="btn btn-default" data-toggle="modal" data-target="#loginModal" ng-click='uCtrl.signUpTab()'>Sign Up</button></p>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <p class="text-center"><button class="btn btn-default" ng-click=uCtrl.login()>Dashboard</button></p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
- 

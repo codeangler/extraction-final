@@ -81,7 +81,7 @@
             <!-- Login Pane -->
             <div class="tab-pane in active" id="login">
               <div>
-                <form ng-submit=uCtrl.login()>
+                <form ng-submit=uCtrl.login() novalidate>
                   <div class="modal-body">
                     <div class="form-group">
                       <label for="email">Email Address</label>
@@ -89,7 +89,8 @@
                     </div>
                     <div class="form-group">
                       <label for="password">Password</label>
-                      <input class="form-control" placeholder="password" name="email" ng-model="uCtrl.userMonkey.password">
+                      <input class="form-control" type=
+                      'password' placeholder="password" name="email" ng-model="uCtrl.userMonkey.password">
                     </div>
                     <p class="text-right"><a href="#">Forgot password?</a></p>
                   </div>
@@ -104,7 +105,7 @@
             <div class="tab-pane fade " id="create">
               <div class="modal-body">
                 <div>
-                  <form ng-submit="uCtrl.createUser()">
+                  <form name="registerForm" ng-submit="uCtrl.createUser()" novalidate>
                     <div class='form-group'>
                       <label class="radio-inline">
                         <input ng-model="uCtrl.newUser.role" type="radio" name="user" value='user'>User
@@ -118,11 +119,13 @@
                     </div>
                     <div class='form-group'>
                       <label for="name">Name</label>
-                      <input class="form-control" placeholder="Enter your name" name="name" ng-model="uCtrl.newUser.name">
+                      <input class="form-control" placeholder="Enter your name" name="name" ng-model="uCtrl.newUser.name" ng-required='true'>
+                      <p class="error validationerror" ng-show="registerForm.name.$invalid && registerForm.name.$touched">Name Required</p>
                     </div>
                     <div class="form-group">
                       <label for="email">Email Address</label>
-                      <input class="form-control" placeholder="Enter your email address" name="email" ng-model="uCtrl.newUser.username">
+                      <input class="form-control" placeholder="Enter your email address" name="email" type="email" ng-model="uCtrl.newUser.username" ng-required='true'>
+                      <p class="error validationerror" ng-show="registerForm.email.$invalid && registerForm.email.$touched">Email Required</p>
                     </div>
                     <div class='form-group'>
                       <label for="name">Phone Number</label>
@@ -130,16 +133,17 @@
                     </div>
                     <div class="form-group">
                       <label for="password">Password</label>
-                      <input class="form-control" placeholder="password" name="email" ng-model="uCtrl.newUser.password">
+                      <input class="form-control" placeholder="password" name="password" type='password' ng-model="uCtrl.newUser.password" ng-required='true' ng-minlength=8>
+                      <p class="error validationerror" ng-show="registerForm.password.$invalid && registerForm.password.$touched">Password Required. Minium Length 8 characters</p>
                     </div>
                     <div class='form-group' ng-show='uCtrl.newUser.role === "user"'>
                       <label for="name">Clinican's Email Address</label>
-                      <input class="form-control" placeholder="Clinician's Email" name="clinican" ng-model="uCtrl.newUser.enrolledWith">
+                      <input class="form-control" placeholder="Clinician's Email" type="email" name="clinican" ng-model="uCtrl.newUser.enrolledWith">
                     </div>
                     <p class="text-right"><a href="#">Forgot password?</a></p>
                     <div class="modal-footer">
                       <a href="#" data-dismiss="modal" class="btn">Close</a>
-                      <button type="submit" class="btn btn-primary">Create Account</button>
+                      <button type="submit" class="submit btn btn-primary">Create Account</button>
                       </a>
                     </div>
                   </form>

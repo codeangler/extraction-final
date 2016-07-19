@@ -1,72 +1,47 @@
 <!-- user.dashboard.html -->
-You are in the dashboard for :
-<h1>{{dCtrl.theUser.name}}</h1>
-<h5>{{dCtrl.theUser.role}}</h5>
+<h2>{{dCtrl.theUser.name}} dashboard as {{dCtrl.theUser.role}} </h2>
+<div class="col-md-3" ng-if="dCtrl.theUser.role ==='clinician'">
 
+  <select ng-options="patient.name for patient in dCtrl.thePatients" ng-model="dCtrl.selectedPatient" ng-change="dCtrl.fetchPatientRecord(dCtrl.selectedPatient)" placeholder="Please Select Patient" class="form-control">
+<option value=''>- Please Choose -</option>
+  </select>
+<!--   <select ng-model="dCtrl.selectedPatient" ng-change="dCtrl.fetchPatientRecord(dCtrl.selectedPatient)" class="form-control">
+    <option value="Select a patient" selected>Select a patient</option>
+    <option ng-repeat="patient in dCtrl.thePatients" value="{{ patient.name }}">{{ patient.name }}</option>
+  </select> -->
+
+</div>
 <!-- Generate list of patients from returned GET request sorted by enrolled Clinican's username.  Returned patients names are made available as options and on selction fire function to capture their data -->
-Select Patient
-<select ng-options="patient.name for patient in dCtrl.thePatients" ng-model="dCtrl.selectedPatient" ng-change="dCtrl.fetchPatientRecord(dCtrl.selectedPatient)"></select>
-
-<hr />
-
-<h2 class="text-center">{{ dCtrl.selectedPatient.name }}'s Calendar</h2>
+<div class="row">
+  <div class="col-md-12"><hr></div>
+</div>
+<h2 ng-if="dCtrl.theUser.role ==='user'" class="text-center">{{ dCtrl.theUser.name }}'s Calendar</h2>
+<h2 ng-if="dCtrl.theUser.role ==='clinician'" class="text-center">{{ dCtrl.selectedPatient.name }}'s Calendar</h2>
 <h4 class="text-center">{{ dCtrl.calendarTitle }}</h4>
-  <div class="row">
-
-    <div class="col-md-6 text-center">
-      <div class="btn-group">
-
-        <button
-          class="btn btn-primary"
-          mwl-date-modifier
-          date="dCtrl.viewDate"
-          decrement="dCtrl.calendarView">
-          Previous
-        </button>
-        <button
-          class="btn btn-default"
-          mwl-date-modifier
-          date="dCtrl.viewDate"
-          set-to-today>
-          Today
-        </button>
-        <button
-          class="btn btn-primary"
-          mwl-date-modifier
-          date="dCtrl.viewDate"
-          increment="dCtrl.calendarView">
-          Next
-        </button>
-      </div>
+<div class="row">
+  <div class="col-md-6 text-center">
+    <div class="btn-group">
+      <button class="btn btn-primary" mwl-date-modifier date="dCtrl.viewDate" decrement="dCtrl.calendarView">
+        Previous
+      </button>
+      <button class="btn btn-default" mwl-date-modifier date="dCtrl.viewDate" set-to-today>
+        Today
+      </button>
+      <button class="btn btn-primary" mwl-date-modifier date="dCtrl.viewDate" increment="dCtrl.calendarView">
+        Next
+      </button>
     </div>
-
-    <br class="visible-xs visible-sm">
-
-    <div class="col-md-6 text-center">
-      <div class="btn-group">
-        <label class="btn btn-primary" ng-model="dCtrl.calendarView" uib-btn-radio="'year'">Year</label>
-        <label class="btn btn-primary" ng-model="dCtrl.calendarView" uib-btn-radio="'month'">Month</label>
-        <label class="btn btn-primary" ng-model="dCtrl.calendarView" uib-btn-radio="'week'">Week</label>
-        <label class="btn btn-primary" ng-model="dCtrl.calendarView" uib-btn-radio="'day'">Day</label>
-      </div>
-    </div>
-
   </div>
-
-  <br>
-<mwl-calendar
-   events="dCtrl.events"
-    view="dCtrl.calendarView"
-    view-title="dCtrl.calendarTitle"
-    view-date="dCtrl.viewDate"
-    on-event-click="dCtrl.eventClicked(calendarEvent)"
-    on-event-times-changed="dCtrl.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
-    
-    cell-is-open="dCtrl.isCellOpen"
-    day-view-start="06:00"
-    day-view-end="22:00"
-    day-view-split="30"
-    cell-modifier="dCtrl.modifyCell(calendarCell)">
+  <br class="visible-xs visible-sm">
+  <div class="col-md-6 text-center">
+    <div class="btn-group">
+      <label class="btn btn-primary" ng-model="dCtrl.calendarView" uib-btn-radio="'year'">Year</label>
+      <label class="btn btn-primary" ng-model="dCtrl.calendarView" uib-btn-radio="'month'">Month</label>
+      <label class="btn btn-primary" ng-model="dCtrl.calendarView" uib-btn-radio="'week'">Week</label>
+      <!-- <label class="btn btn-primary" ng-model="dCtrl.calendarView" uib-btn-radio="'day'">Day</label> -->
+    </div>
+  </div>
+</div>
+<br>
+<mwl-calendar events="dCtrl.events" view="dCtrl.calendarView" view-title="dCtrl.calendarTitle" view-date="dCtrl.viewDate" on-event-click="dCtrl.eventClicked(calendarEvent)" on-event-times-changed="dCtrl.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd" cell-is-open="dCtrl.isCellOpen" day-view-start="06:00" day-view-end="22:00" day-view-split="30" cell-modifier="dCtrl.modifyCell(calendarCell)">
 </mwl-calendar>
-
-

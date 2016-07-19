@@ -14,6 +14,7 @@ function dCtrl($http, $stateParams, GameLogFactory) {
     .then(function(returnData) {
       // console.log(returnData, 'at app.dashboardController')
       dCtrl.theUser = returnData.data.user
+      
       dCtrl.thePatients = returnData.data.patients
 
       console.log('app.dashboardController', returnData)
@@ -66,7 +67,8 @@ function dCtrl($http, $stateParams, GameLogFactory) {
     $http.get('/api/v1/gamelogs/' + patient._id)
       .then(function(returnGameData) {
         dCtrl.theGameLog = returnGameData.data
-        console.log(dCtrl.theGameLog, 'return game data app.dashboardController.js')
+        dCtrl.events = [ ]
+        // console.log(dCtrl.theGameLog, 'return game data app.dashboardController.js')
         for (let i = 0; i < dCtrl.theGameLog.length; i++) {
               let temp = {
 
@@ -88,7 +90,7 @@ function dCtrl($http, $stateParams, GameLogFactory) {
   ///////////////////    ####  CALENDAR   ######/////////////////
 
   //These variables MUST be set as a minimum for the calendar to work
-  dCtrl.calendarView = 'week';
+  dCtrl.calendarView = 'month';
   dCtrl.viewDate = new Date();
 
   dCtrl.events = []
