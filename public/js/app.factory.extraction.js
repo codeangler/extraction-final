@@ -23,7 +23,7 @@
 
     return {
       co: commandingOfficer,
-      gameRecord: factoryGameRecord,
+      factoryRecord: factoryGameRecord,
       iterator: factoryIterator,
       currentRank: currentRank,
 
