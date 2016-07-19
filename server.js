@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var apiRoutes = require('./api_routes')
-var port = process.env.PORT || 3260
+var port = process.env.PORT || 80
 
 // Create Express App Object
 var app = express();
