@@ -15,7 +15,7 @@
     }
     pCtrl.response = "";
     pCtrl.passFactoryGameRecord = factoryGameRecord;
-    pCtrl.currentRank = currentRank[0]
+    pCtrl.currentRank = ExtractionFactory.currentRank[0]
 
 
     // Return the change in SUD Rating from beginning to end
