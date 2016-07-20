@@ -8,14 +8,17 @@
         
       </div>
     </div> -->
+    <input type="checkbox" ng-repeat="e in pCtrl.responseCounter track by $index" ng-model="pCtrl.responseCounter[$index]">
     <h6>Report: </h6> <p>{{pCtrl.currentSense}}</p>
   </div>
   <div class="col-xs-8">
     <div class="form-group">
       <!-- <label class="control-label" for="inputSmall">Sight, Sound</label> -->
+
       <form ng-submit="pCtrl.submitResponse($event)">
         <div class="input-group">
-          <input ng-model="pCtrl.response" id="inputSmall" class="form-control" type="text" placeholder="submit responses with RETURN key or selecting submit" autofocus autocomplete="off">
+          <input ng-model="pCtrl.response" id="inputSmall" class="form-control" type="text" placeholder="Type Responses Here | Return or Submit to next step" autofocus autocomplete="off">
+
           <span class="input-group-btn">
             <button class="btn btn-default btn-primary" type="submit">Submit</button>
           </span>

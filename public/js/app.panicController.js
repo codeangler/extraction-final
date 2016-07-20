@@ -8,16 +8,16 @@
   function panicController(ExtractionFactory, GameLogFactory, $scope, $state) {
     var pCtrl = this;
     // var i = 0; // myCount() works to update iterations throughout controller
-    pCtrl.responseCounter = [5, 4, 3, 2, 1]
+
     pCtrl.gameRecord = [];
-    pCtrl.someFunction = function(){
+    pCtrl.someFunction = function() {
       console.log('someFunction')
     }
     pCtrl.response = "";
     pCtrl.passFactoryGameRecord = factoryGameRecord;
     pCtrl.currentRank = ExtractionFactory.currentRank[0]
-
-
+    let responseCounter = [false, false, false, false, false]
+    pCtrl.responseCounter = responseCounter;
     // Return the change in SUD Rating from beginning to end
     ratingChangeFunc = function(factoryGameRecord) {
       pCtrl.ratingChange = (Number(factoryGameRecord.gameRecord.sud1) - Number(factoryGameRecord.gameRecord.sud17))
@@ -66,7 +66,18 @@
       GameLogFactory.factoryGameLog();
     }
 
+    let responseCounterFunc = function() {
+      let length = pCtrl.responseCounter.length
+      for(let i = 0 ; i < pCtrl.responseCounter.length; i++){
+        if(pCtrl.responseCounter[i] === false){
+          return pCtrl.responseCounter[i] = true;
+        }
+      }
+      
+    }
+
     pCtrl.submitResponse = function(e) {
+      responseCounterFunc();
       var currentDate = new Date();
       var currentTime = Date.now();
       var stringDate = currentDate.toString();
@@ -79,6 +90,7 @@
       // mobile testing alert
       // alert('response from submission in a text input ' + pCtrl.gameRecord["response" + i])
       myCount();
+      
       pCtrl.stepThroughIterator(factoryIterator);
       factoryGameRecord.gameRecord = pCtrl.gameRecord
       factoryIterator = factoryIterator;
@@ -86,6 +98,10 @@
       // Swap ui-sref="game-report" w/n panicGame.rating 
       ratingSrefSwap()
       ratingAgainState(factoryIterator);
+    }
+
+    function user(num) {
+      num--;
     }
 
     // Access Commanding Officer statements stored as arrays within object found in app.extraction-factory.js
@@ -105,26 +121,31 @@
           pCtrl.officerStatements = ExtractionFactory.co.sight[0];
           clearInterval(typewriterTimer);
           typewriter();
+
         } else if (factoryIterator == 7) {
           // touch
+          pCtrl.responseCounter = [false, false, false, false]
           pCtrl.currentSense = "Textures";
           pCtrl.officerStatements = ExtractionFactory.co.touch[0]
           clearInterval(typewriterTimer);
           typewriter();
         } else if (factoryIterator == 11) {
           // sound
+          pCtrl.responseCounter = [false, false, false]
           pCtrl.currentSense = "Sounds";
           pCtrl.officerStatements = ExtractionFactory.co.sound[0]
           clearInterval(typewriterTimer);
           typewriter();
         } else if (factoryIterator == 14) {
           // smell
+          pCtrl.responseCounter = [false, false]
           pCtrl.currentSense = "Smells";
           pCtrl.officerStatements = ExtractionFactory.co.smell[0]
           clearInterval(typewriterTimer);
           typewriter();
         } else if (factoryIterator == 16) {
           // taste
+          pCtrl.responseCounter = [false]
           pCtrl.currentSense = "Taste";
           pCtrl.officerStatements = ExtractionFactory.co.taste[0]
           clearInterval(typewriterTimer);
@@ -167,7 +188,7 @@
     }
 
     // Clear all objects upon load of homescreen
-    function clearObjects(){
+    function clearObjects() {
       console.log(factoryIterator, 'FI')
       factoryIterator = 0;
       console.log(factoryIterator, 'FI')
