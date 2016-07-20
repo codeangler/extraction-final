@@ -1,5 +1,5 @@
 <!-- user.dashboard.html -->
-<h2>{{dCtrl.theUser.name}} dashboard as {{dCtrl.theUser.role}} </h2>
+<h2 ng-if="dCtrl.theUser.role ==='clinician'">{{dCtrl.theUser.name}} dashboard as {{dCtrl.theUser.role}} </h2>
 <div class="col-md-3" ng-if="dCtrl.theUser.role ==='clinician'">
 
   <select ng-options="patient.name for patient in dCtrl.thePatients" ng-model="dCtrl.selectedPatient" ng-change="dCtrl.fetchPatientRecord(dCtrl.selectedPatient)" placeholder="Please Select Patient" class="form-control">
