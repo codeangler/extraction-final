@@ -3,7 +3,7 @@
   .factory('ExtractionFactory', eFactory)
 
   function eFactory() {
-    
+    // TODO something
     commandingOfficer = {
       sud : ['Report your current distress level', 'Check-in Soldier! How distressed are you presently'],
       mission : ['MISSION COMPLETE! Nice work soldier.'],

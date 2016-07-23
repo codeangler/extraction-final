@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var apiRoutes = require('./api_routes')
-var port =  80
+var port =  3260 // devolopment   || 80 // production
 
 
 // Create Express App Object
@@ -16,6 +16,7 @@ mongoose.connect('mongodb://localhost/extraction_db', function(err){
     if(!err){console.log('You have connected to  mongodb')}
 })
 var User = require('./models/userSchema') // Captures the model that is exported from userSchema.js
+// if you want to update add some gameSchema 
 
 /** Express Session Setup **/
 var session = require('express-session')

@@ -13,4 +13,20 @@ db.users.update({username: "user@user.org"}, {$set: {enrolledWith : ["emily@emil
 
 ms test
 
-db.users.update({username: "test@test.com"}, {$set: {enrolledWith : ["emily@emily.com", "sara@sara.com"]}})
+db.users.update({username: "some@body.com"}, {$set: {enrolledWith : [ "sara@sara.com"]}})
+
+db.users.update({username: "emily@emily.com"}, {$set: {name : "Emily's"}})
+db.users.update({username: "debi@downer.com"}, {$set: {name : "Debi", username:"debi@debi.com"}})
+
+
+"_id" : ObjectId("578579fce2dd0aa832419d67"),
+        "role" : "clinician",
+        "name" : "someone",
+        "username" : "special@a.com",
+        "phoneNumber" : "234-5345-63453",
+        "password" : "$2a$11$jBTsWhDXvqyfphqLW7wUn.2fctOCgBD9zcFU2cs0N8VCt2NnSDOOu",
+        "patient" : {
+                "enrolledWith" : [ ]
+        },
+        "__v" : 0
+}
