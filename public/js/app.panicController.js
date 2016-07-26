@@ -8,11 +8,9 @@
   function panicController(ExtractionFactory, GameLogFactory, $scope, $state) {
     var pCtrl = this;
     // var i = 0; // myCount() works to update iterations throughout controller
-
+    let iterator = ExtractionFactory.factoryIterator;
+    let factoryGameRecord = ExtractionFactory.factoryGameRecord;
     pCtrl.gameRecord = [];
-    pCtrl.someFunction = function() {
-      console.log('someFunction')
-    }
     pCtrl.response = "";
     pCtrl.passFactoryGameRecord = factoryGameRecord;
     pCtrl.currentRank = ExtractionFactory.currentRank[0]
@@ -54,13 +52,13 @@
       var stringDate = currentDate.toString();
       // .push(rating &  currentDate) to gameRecord Array
       // alternative syntax that needs spefic iteration pCtrl.gameRecord.push({sud: rating, currentDate: currentDate})
-      pCtrl.gameRecord["sud" + factoryIterator] = rating;
-      pCtrl.gameRecord["currentTime" + factoryIterator] = currentTime;
-      pCtrl.gameRecord["currentDate" + factoryIterator] = currentDate;
-      pCtrl.gameRecord["toDateString" + factoryIterator] = justDate;
-      pCtrl.gameRecord["stringDate" + factoryIterator] = stringDate;
+      pCtrl.gameRecord["sud" + iterator] = rating;
+      pCtrl.gameRecord["currentTime" + iterator] = currentTime;
+      pCtrl.gameRecord["currentDate" + iterator] = currentDate;
+      pCtrl.gameRecord["toDateString" + iterator] = justDate;
+      pCtrl.gameRecord["stringDate" + iterator] = stringDate;
       myCount();
-      pCtrl.stepThroughIterator(factoryIterator);
+      pCtrl.stepThroughIterator(iterator);
       factoryGameRecord.gameRecord = pCtrl.gameRecord
         // POST to 
       GameLogFactory.factoryGameLog();
@@ -81,23 +79,23 @@
       var currentDate = new Date();
       var currentTime = Date.now();
       var stringDate = currentDate.toString();
-      pCtrl.gameRecord["response" + factoryIterator] = pCtrl.response;
-      pCtrl.gameRecord["currentTime" + factoryIterator] = currentTime;
-      pCtrl.gameRecord["currentDate" + factoryIterator] = currentDate;
-      pCtrl.gameRecord["stringDate" + factoryIterator] = stringDate;
+      pCtrl.gameRecord["response" + iterator] = pCtrl.response;
+      pCtrl.gameRecord["currentTime" + iterator] = currentTime;
+      pCtrl.gameRecord["currentDate" + iterator] = currentDate;
+      pCtrl.gameRecord["stringDate" + iterator] = stringDate;
       pCtrl.response = "";
 
       // mobile testing alert
       // alert('response from submission in a text input ' + pCtrl.gameRecord["response" + i])
       myCount();
       
-      pCtrl.stepThroughIterator(factoryIterator);
+      pCtrl.stepThroughIterator(iterator);
       factoryGameRecord.gameRecord = pCtrl.gameRecord
-      factoryIterator = factoryIterator;
+     
 
       // Swap ui-sref="game-report" w/n panicGame.rating 
       ratingSrefSwap()
-      ratingAgainState(factoryIterator);
+      ratingAgainState(iterator);
     }
 
     function user(num) {
@@ -105,60 +103,61 @@
     }
 
     // Access Commanding Officer statements stored as arrays within object found in app.extraction-factory.js
-    pCtrl.stepThroughIterator = function(factoryIterator) {
+    pCtrl.stepThroughIterator = function(iterator) {
 
-        if (factoryIterator == 0) {
+        if (iterator == 0) {
           myCount();
           pCtrl.officerStatements = ExtractionFactory.co.initialHome[0]
           typewriter();
-        } else if (factoryIterator == 1) {
+        } else if (iterator == 1) {
           pCtrl.officerStatements = ExtractionFactory.co.sud[1]
           clearInterval(typewriterTimer);
           typewriter();
-        } else if (factoryIterator == 2) {
+        } else if (iterator == 2) {
           // sight
           pCtrl.currentSense = "Sights";
           pCtrl.officerStatements = ExtractionFactory.co.sight[0];
           clearInterval(typewriterTimer);
           typewriter();
 
-        } else if (factoryIterator == 7) {
+        } else if (iterator == 7) {
           // touch
           pCtrl.responseCounter = [false, false, false, false]
           pCtrl.currentSense = "Textures";
           pCtrl.officerStatements = ExtractionFactory.co.touch[0]
           clearInterval(typewriterTimer);
           typewriter();
-        } else if (factoryIterator == 11) {
+        } else if (iterator == 11) {
           // sound
           pCtrl.responseCounter = [false, false, false]
           pCtrl.currentSense = "Sounds";
           pCtrl.officerStatements = ExtractionFactory.co.sound[0]
           clearInterval(typewriterTimer);
           typewriter();
-        } else if (factoryIterator == 14) {
+        } else if (iterator == 14) {
           // smell
           pCtrl.responseCounter = [false, false]
           pCtrl.currentSense = "Smells";
           pCtrl.officerStatements = ExtractionFactory.co.smell[0]
           clearInterval(typewriterTimer);
           typewriter();
-        } else if (factoryIterator == 16) {
+        } else if (iterator == 16) {
           // taste
           pCtrl.responseCounter = [false]
           pCtrl.currentSense = "Taste";
           pCtrl.officerStatements = ExtractionFactory.co.taste[0]
           clearInterval(typewriterTimer);
           typewriter();
-        } else if (factoryIterator == 17) {
+        } else if (iterator == 17) {
           // Announce Mission Complete Get Another Sud Reading 
           pCtrl.officerStatements = ExtractionFactory.co.sud[0]
           clearInterval(typewriterTimer);
           typewriter();
           timeFunction(factoryGameRecord);
 
-        } else if (factoryIterator == 18) {
+        } else if (iterator == 18) {
           // Announce Mission Complete Get Another Sud Reading 
+          console.log(ExtractionFactory.factoryGameRecord)
           pCtrl.officerStatements = ExtractionFactory.co.mission[0]
           clearInterval(typewriterTimer);
           typewriter();
@@ -166,10 +165,10 @@
         }
       }
       // initial call of pCtrl.stepThroughIterator(i=0)
-    pCtrl.stepThroughIterator(factoryIterator);
+    pCtrl.stepThroughIterator(iterator);
 
     // establish function myCount() to interate throughout the controller
-    function myCount() { factoryIterator++; }
+    function myCount() { iterator++; }
 
     // Typewriter effect using setInterval() to effect {{bound.text}}  | clearInterval()
     function typewriter() {
@@ -189,9 +188,9 @@
 
     // Clear all objects upon load of homescreen
     function clearObjects() {
-      console.log(factoryIterator, 'FI')
-      factoryIterator = 0;
-      console.log(factoryIterator, 'FI')
+      console.log(iterator, 'FI')
+      iterator = 0;
+      console.log(iterator, 'FI')
     }
 
     // Set ui-sref w/n panic-rating.html dependent on value of i 
@@ -203,7 +202,7 @@
 
     ratingAgainState = function(i) {
       // After completing all steps of intervention return to SUD rating 
-      if (factoryIterator == 17) {
+      if (iterator == 17) {
         $state.go("panicGame.rating")
       }
     }
