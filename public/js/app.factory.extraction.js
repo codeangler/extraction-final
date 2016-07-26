@@ -17,13 +17,13 @@
     }
 
     let currentRank = ['private', 'Private First Class', 'Lance Corporal']
-    factoryGameRecord = {};
+    let factoryGameRecord = {};
     let factoryIterator = 0
 
 
     return {
       co: commandingOfficer,
-      factoryRecord: factoryGameRecord,
+      factoryGameRecord: factoryGameRecord,
       factoryIterator: factoryIterator,
       currentRank: currentRank,
 

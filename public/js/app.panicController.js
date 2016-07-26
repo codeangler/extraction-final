@@ -9,6 +9,7 @@
     var pCtrl = this;
     // var i = 0; // myCount() works to update iterations throughout controller
     let iterator = ExtractionFactory.factoryIterator;
+    let factoryGameRecord = ExtractionFactory.factoryGameRecord;
     pCtrl.gameRecord = [];
     pCtrl.response = "";
     pCtrl.passFactoryGameRecord = factoryGameRecord;
@@ -156,6 +157,7 @@
 
         } else if (iterator == 18) {
           // Announce Mission Complete Get Another Sud Reading 
+          console.log(ExtractionFactory.factoryGameRecord)
           pCtrl.officerStatements = ExtractionFactory.co.mission[0]
           clearInterval(typewriterTimer);
           typewriter();
