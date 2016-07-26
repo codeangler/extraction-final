@@ -10,9 +10,6 @@
     // var i = 0; // myCount() works to update iterations throughout controller
 
     pCtrl.gameRecord = [];
-    pCtrl.someFunction = function() {
-      console.log('someFunction')
-    }
     pCtrl.response = "";
     pCtrl.passFactoryGameRecord = factoryGameRecord;
     pCtrl.currentRank = ExtractionFactory.currentRank[0]
