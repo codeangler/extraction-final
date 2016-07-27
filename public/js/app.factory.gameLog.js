@@ -11,7 +11,8 @@
 
     gLog.factoryGameLog = function() {
       // var fLog = factoryGameRecord.gameRecord
-      let fLog = ExtractionFactory.factoryGameRecord
+      let fLog = ExtractionFactory.factoryGameRecord.gameRecord
+      console.log('fLog', fLog)
       if (fLog.sud17) {
         console.log('if  app.factory.gameLog', gLog.logUpdate)
 

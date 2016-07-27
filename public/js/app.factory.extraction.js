@@ -3,8 +3,8 @@
     .factory('ExtractionFactory', eFactory)
 
   function eFactory() {
-
-    let commandingOfficer = {
+    let ExtractionFactory = {};
+    ExtractionFactory.commandingOfficer = {
         sud: ['Report your current distress level', 'Check-in Soldier! How distressed are you presently'],
         mission: ['MISSION COMPLETE! Nice work soldier.'],
         encouragement: ['Keep going', 'Nice work.', 'Take your time. Not too fast. Not too slow.'],
@@ -16,17 +16,10 @@
         initialHome: ['Soldier: Recover your hijacked mind by completing these missions!']
     }
 
-    let currentRank = ['private', 'Private First Class', 'Lance Corporal']
-    let factoryGameRecord = {};
-    let factoryIterator = 0
+    ExtractionFactory.currentRank = ['private', 'Private First Class', 'Lance Corporal']
+    ExtractionFactory.factoryGameRecord = {};
+    ExtractionFactory.factoryIterator = 0;
 
-
-    return {
-      co: commandingOfficer,
-      factoryGameRecord: factoryGameRecord,
-      factoryIterator: factoryIterator,
-      currentRank: currentRank,
-
-    };
+    return ExtractionFactory;
   }
 }());
