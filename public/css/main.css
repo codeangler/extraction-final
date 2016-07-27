@@ -68,3 +68,11 @@ input.ng-valid.ng-touched {
   color: lightgray;
   border-color: gray;
 }
+
+
+/* Small devices (tablets, 768px and up) */
+  @media (max-width : 767px) { 
+  .jumbotron p {
+    min-height: 121px;
+  }
+}
