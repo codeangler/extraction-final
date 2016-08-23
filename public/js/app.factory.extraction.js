@@ -11,13 +11,13 @@
         sight: ['Environment Report! List five things you see around you.'],
         touch: ['Touch four surfaces and report to me their texture'],
         sound: ['Listen! Report three sounds you hear'],
-        smell: ['Describe two smells you are near you'],
+        smell: ['Describe two smells in your surroundings'],
         taste: ['Finally, report one thing you can taste presently'],
         initialHome: ['Soldier: Recover your hijacked mind by completing these missions!']
     }
 
     ExtractionFactory.currentRank = ['private', 'Private First Class', 'Lance Corporal']
-    ExtractionFactory.factoryGameRecord = {};
+    ExtractionFactory.factoryGameRecord = {}; // TODO: this could better be used as a service
     ExtractionFactory.factoryIterator = 0;
 
     return ExtractionFactory;
