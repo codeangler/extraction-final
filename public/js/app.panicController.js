@@ -23,7 +23,9 @@
     //  Calculate the difference from the beginning of the game and end of the game.
     var timeFunction = function(factoryGameRecord) {
       var duration = (factoryGameRecord.gameRecord.currentDate16 - factoryGameRecord.gameRecord.currentDate1)
-      msToTime(duration)
+      var totalMs = msToTime(duration);
+      // TODO: let's try to make this a function without side effects
+      pCtrl.timeElasped = totalMs
     }
 
     function msToTime(duration) {
@@ -36,7 +38,10 @@
       minutes = (minutes < 10) ? "0" + minutes : minutes;
       seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-      pCtrl.timeElasped = hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+      // this function has side effects. 
+      // instead of returning something, which can be used to change pCtrl, we just
+      // change pCtrl and keep moving
+      return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
     }
 
     // SUD Rating + currentDate at that moment of selection
