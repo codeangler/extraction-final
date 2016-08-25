@@ -1,17 +1,19 @@
-# Project Title
+# Extraction Application
 
-One Paragraph of project description goes here
+An application to provide patients and clinicians means to empower clients with take home interventions walk-throughs. Patients can have the app walk them through an intervention and sign-up to have usage logged and shared with their clinicians. Clinicians can view agreeing patients' usage of the app to inform future treatment planning.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+git clone [repo]
+
+$ npm install
 
 ### Prerequisities
 
 What things you need to install the software and how to install them
 
 ```
-Give examples
+npm install
 ```
 
 ### Installing
@@ -58,8 +60,14 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* Dropwizard - Bla bla bla
-* Maven - Maybe
+* MongoDB
+* Express.js
+* Node.js
+* Angularjs 1.5
+* Passport.js
+* 
+* Sublime Text 3
+* 
 * Atom - ergaerga
 
 ## Contributing
@@ -82,6 +90,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* Thanks to Matt Lewis for the Angular Bootstrap Calendar https://github.com/mattlewis92/angular-bootstrap-calendar
+* Thanks to staff at RefactorU  

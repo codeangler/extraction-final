@@ -12,8 +12,8 @@ var port =  3260 // devolopment   || 80 // production
 var app = express();
 
 //  Connect to Database
-mongoose.connect('mongodb://localhost/extraction_db', function(err){
-  if(err){console.log("Error connecting to db")}
+mongoose.connect('mongodb://localhost:27017/extraction_db', function(err){
+  if(err){console.log("Error connecting to db", err)}
     if(!err){console.log('You have connected to  mongodb')}
 })
 var User = require('./models/userSchema') // Captures the model that is exported from userSchema.js
