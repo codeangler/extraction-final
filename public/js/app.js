@@ -11,15 +11,14 @@
         url: '/',
         templateUrl: 'html/home.html',
         controller: 'panicCtrl as pCtrl',
-        onEnter: function(){
-        }
+        onEnter: function() {}
       })
       .state('panicGame', {
         url: '/panic-game',
         templateUrl: 'html/panic-game.html',
         controller: 'panicCtrl as pCtrl',
-        onEnter: function(){
-          
+        onEnter: function() {
+
         }
       })
       .state('panicGame.rating', {
@@ -37,7 +36,10 @@
         url: '/dashboard/:id',
         templateUrl: 'html/dashboard.html',
         controller: 'dashboardController as dCtrl',
-      
+      })
+      .state('components', {
+        url: '/components',
+        templateUrl: 'app/components/components.html'
       })
 
     $urlRouterProvider.otherwise('/')
