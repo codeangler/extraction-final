@@ -5,7 +5,7 @@
 
   function typewriterDirective() {
     return {
-      restrict: 'EA',
+      restrict: 'A',
       scope: {},
       templateUrl: '/app/components/typewriter/typewriter.html', // path relative to index.html
     }
