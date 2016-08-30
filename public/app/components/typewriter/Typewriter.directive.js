@@ -1,13 +1,13 @@
 // Typewriter.directive.js
 (function() {
   angular.module('extractionApp')
-    .directive('myDirective', typewriterDirective)
+    .directive('eaTypewriter', typewriterDirective)
 
   function typewriterDirective() {
     return {
       restrict: 'EA',
       scope: {},
-      template: 'This is typewriter directive'
+      templateUrl: '/app/components/typewriter/typewriter.html', // path relative to index.html
     }
   };
 })();
