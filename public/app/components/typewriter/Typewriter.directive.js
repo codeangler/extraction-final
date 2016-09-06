@@ -8,9 +8,11 @@
       restrict: 'A',
       transclude: true,
       replace: true,
-      scope: {},
+      scope: {
+        
+      },
       templateUrl: '/app/components/typewriter/typewriter.html', // path relative to index.html
-      controller: 'typewriterController as tCtrl'
+      controller: 'typewriterController as tCtrl' // controllerAs: 'typewriterController'
     }
   };
 })();

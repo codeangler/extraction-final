@@ -1,5 +1,4 @@
 //app.userDashboard.controller.js
-
 (function(){
 "use strict"
   angular.module('extractionApp')
