@@ -1,5 +1,8 @@
 //app.userDashboard.controller.js
-angular.module('extractionApp')
+
+(function(){
+"use strict"
+  angular.module('extractionApp')
   .controller('dashboardController', dCtrl)
 
 dCtrl.$inject = ['$http', '$stateParams', 'GameLogFactory']
@@ -148,3 +151,5 @@ function dCtrl($http, $stateParams, GameLogFactory) {
   };
 
 }
+
+})()   // the iffe breaks dashboard

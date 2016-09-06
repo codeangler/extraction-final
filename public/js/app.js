@@ -35,11 +35,13 @@
       .state('dashboard', {
         url: '/dashboard/:id',
         templateUrl: 'html/dashboard.html',
-        controller: 'dashboardController as dCtrl',
+        controller: 'dashboardController as dCtrl'
+
       })
       .state('components', {
         url: '/components',
-        templateUrl: 'app/components/components.html'
+        templateUrl: 'app/components/components.html',
+        // controller: 'typewriterController as tCtrl'   call 
       })
 
     $urlRouterProvider.otherwise('/')

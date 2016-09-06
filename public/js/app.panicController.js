@@ -1,4 +1,6 @@
 (function() {
+  // "use strict" TODO : debug w/  "use strict" enabled
+
   angular.module("extractionApp")
     .controller('panicCtrl', panicController)
 

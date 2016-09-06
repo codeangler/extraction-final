@@ -8,6 +8,7 @@
       restrict: 'A',
       scope: {},
       templateUrl: '/app/components/typewriter/typewriter.html', // path relative to index.html
+      controller: 'typewriterController as tCtrl'
     }
   };
 })();
