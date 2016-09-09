@@ -6,16 +6,19 @@
     .controller('typewriterController', tCtrl);
 
   // Inject dependencies
-  tCtrl.$inject = ['$scope'];
+  tCtrl.$inject = ['$scope', 'typewriterService', '$stateParams'];
 
   // Controller
-  function tCtrl($scope) {
+  function tCtrl($scope, typewriterService, $stateParams) {
+    console.log($stateParams.id)
     const tCtrl = this;
-    tCtrl.officerStatements = "Hi this is your commanding officer stuck in a directive. help me please!?!?!?!"
+    tCtrl.officerStatements = typewriterService.getMessage("touch")[0]
     let typewriterTimer;
-    clearInterval(typewriterTimer); // TODO: hoisting issue with clearInterval()
+    clearInterval(typewriterTimer); 
+    // TODO: hoisting issue with clearInterval()
     // Typewriter effect using setInterval() to effect {{bound.text}}  | clearInterval()
     function typewriter() {
+      console.log(tCtrl.officerStatements)
       const localContent = tCtrl.officerStatements;
       tCtrl.officerTypewriter = "";
       let k = 0;

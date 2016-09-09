@@ -39,7 +39,7 @@
 
       })
       .state('components', {
-        url: '/components',
+        url: '/components/:id',
         templateUrl: 'app/components/components.html',
         // controller: 'typewriterController as tCtrl'   call 
       })
